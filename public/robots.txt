@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# Fallback mirror (not for indexing). Main site:
+# https://paygt.ru/

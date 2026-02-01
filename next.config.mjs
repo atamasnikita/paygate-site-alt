@@ -1,8 +1,9 @@
-/** @type {import("next").NextConfig} */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  poweredByHeader: false
+  // GitHub Pages requires a fully static site.
+  output: 'export',
+  trailingSlash: true,
+  images: { unoptimized: true }
 };
 
 export default nextConfig;
-

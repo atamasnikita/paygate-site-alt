@@ -27,7 +27,7 @@ function normalizeTelegram(value: string): string {
 
 export const config = {
   siteUrl: normalizeUrl(env("NEXT_PUBLIC_SITE_URL") ?? "https://paygt.ru"),
-  botUrl: normalizeTelegram(env("NEXT_PUBLIC_BOT_URL") ?? botUrlFromUsername ?? "https://t.me/your_bot_username"),
+  botUrl: normalizeTelegram(env("NEXT_PUBLIC_BOT_URL") ?? botUrlFromUsername ?? "https://t.me/PayGateAccessBot"),
   panelUrl: env("NEXT_PUBLIC_PANEL_URL") ? normalizeUrl(env("NEXT_PUBLIC_PANEL_URL")!) : undefined,
   supportEmail: env("NEXT_PUBLIC_SUPPORT_EMAIL") ?? (isProd ? "support@paygt.ru" : "support@example.com"),
   supportTg: normalizeTelegram(

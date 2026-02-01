@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
 
-# Fallback mirror (not for indexing). Main site:
-# https://paygt.ru/
+Sitemap: https://paygt.ru/sitemap.xml

@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { config } from "@/config";
 
 export const dynamic = "force-static";
+export const revalidate = false;
 
 export default function robots(): MetadataRoute.Robots {
   const base = config.siteUrl.replace(/\/$/u, "");

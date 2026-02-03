@@ -20,14 +20,14 @@ export const metadata: Metadata = {
     url: config.siteUrl,
     title: "PayGate — монетизация закрытых Telegram‑каналов",
     description:
-      "Оплата подписчиков идёт напрямую в вашу Robokassa. PayGate выдаёт доступ и кикает пользователей с просроченной подпиской.",
+      "Оплата подписчиков идёт напрямую в вашу Robokassa. PayGate выдаёт доступ и исключает пользователей с просроченной подпиской.",
     siteName: "PayGate"
   },
   twitter: {
     card: "summary_large_image",
     title: "PayGate — монетизация закрытых Telegram‑каналов",
     description:
-      "Оплата подписчиков идёт напрямую в вашу Robokassa. PayGate выдаёт доступ и кикает пользователей с просроченной подпиской."
+      "Оплата подписчиков идёт напрямую в вашу Robokassa. PayGate выдаёт доступ и исключает пользователей с просроченной подпиской."
   }
 };
 

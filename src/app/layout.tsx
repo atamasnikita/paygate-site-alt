@@ -7,22 +7,25 @@ import { SiteHeader } from "@/components/SiteHeader";
 export const metadata: Metadata = {
   metadataBase: new URL(config.siteUrl),
   title: {
-    default: "PayGate — платный доступ в Telegram",
+    default: "PayGate — монетизация закрытых Telegram‑каналов",
     template: "%s — PayGate"
   },
   description:
     "PayGate помогает монетизировать закрытые Telegram‑каналы и чаты: подписчики платят через вашу Robokassa, а PayGate управляет доступом.",
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }]
+  },
   openGraph: {
     type: "website",
     url: config.siteUrl,
-    title: "PayGate — платный доступ в Telegram",
+    title: "PayGate — монетизация закрытых Telegram‑каналов",
     description:
       "Оплата подписчиков идёт напрямую в вашу Robokassa. PayGate выдаёт доступ и кикает пользователей с просроченной подпиской.",
     siteName: "PayGate"
   },
   twitter: {
     card: "summary_large_image",
-    title: "PayGate — платный доступ в Telegram",
+    title: "PayGate — монетизация закрытых Telegram‑каналов",
     description:
       "Оплата подписчиков идёт напрямую в вашу Robokassa. PayGate выдаёт доступ и кикает пользователей с просроченной подпиской."
   }

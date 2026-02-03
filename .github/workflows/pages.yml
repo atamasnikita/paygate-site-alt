@@ -27,7 +27,7 @@ jobs:
       - run: npm run build
       - name: Add CNAME + disable Jekyll
         run: |
-          echo "alt.paygt.ru" > out/CNAME
+          echo "paygt.ru" > out/CNAME
           touch out/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

@@ -83,7 +83,7 @@ export default function HomePage() {
           </div>
 
           <h1 className="mt-6 text-3xl sm:text-4xl md:text-[52px] md:leading-[1.05] font-semibold tracking-tight text-slate-900">
-            PayGate — платный доступ в Telegram за 10 минут
+            PayGate — монетизация закрытых Telegram‑каналов: оплата → ссылка на вступление → автоматическое отключение доступа
           </h1>
           <p className="mt-4 text-base sm:text-lg text-slate-600 max-w-3xl">
             Оплата подписчиков идёт напрямую в вашу Robokassa. PayGate выдаёт доступ и кикает пользователей с просроченной подпиской.

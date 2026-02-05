@@ -3,9 +3,11 @@ import { config } from "@/config";
 
 export function SiteFooter() {
   const requisites = [
-    config.ownerName ? { label: "ФИО", value: config.ownerName } : null,
+    config.ownerName ? { label: "Исполнитель", value: config.ownerName } : null,
+    config.ownerStatus ? { label: "Статус", value: config.ownerStatus } : null,
     config.ownerInn ? { label: "ИНН", value: config.ownerInn } : null,
-    config.ownerStatus ? { label: "Статус", value: config.ownerStatus } : null
+    config.supportEmail ? { label: "Email", value: config.supportEmail } : null,
+    config.ownerAddressShort ? { label: "Адрес", value: config.ownerAddressShort } : null
   ].filter(Boolean) as { label: string; value: string }[];
 
   return (
@@ -28,12 +30,6 @@ export function SiteFooter() {
                   Email:{" "}
                   <a className="hover:text-slate-900" href={`mailto:${config.supportEmail}`}>
                     {config.supportEmail}
-                  </a>
-                </div>
-                <div>
-                  Telegram:{" "}
-                  <a className="hover:text-slate-900" href={config.supportTg} target="_blank" rel="noreferrer">
-                    {config.supportTg.replace(/^https?:\/\/(www\.)?/u, "")}
                   </a>
                 </div>
               </div>
@@ -75,4 +71,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-

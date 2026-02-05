@@ -29,11 +29,10 @@ export const config = {
   siteUrl: normalizeUrl(env("NEXT_PUBLIC_SITE_URL") ?? "https://paygt.ru"),
   botUrl: normalizeTelegram(env("NEXT_PUBLIC_BOT_URL") ?? botUrlFromUsername ?? "https://t.me/PayGateAccessBot"),
   panelUrl: env("NEXT_PUBLIC_PANEL_URL") ? normalizeUrl(env("NEXT_PUBLIC_PANEL_URL")!) : undefined,
-  supportEmail: env("NEXT_PUBLIC_SUPPORT_EMAIL") ?? (isProd ? "support@paygt.ru" : "support@example.com"),
-  supportTg: normalizeTelegram(
-    env("NEXT_PUBLIC_SUPPORT_TG") ?? (isProd ? "https://t.me/paygt_support" : "https://t.me/your_support")
-  ),
-  ownerName: env("NEXT_PUBLIC_OWNER_NAME") ?? (isProd ? "" : "Заполните позже"),
-  ownerInn: env("NEXT_PUBLIC_OWNER_INN") ?? (isProd ? "" : "Заполните позже"),
-  ownerStatus: env("NEXT_PUBLIC_OWNER_STATUS") ?? (isProd ? "Оформляется" : "Самозанятый (НПД)")
+  supportEmail: env("NEXT_PUBLIC_SUPPORT_EMAIL") ?? (isProd ? "h1noro@yandex.ru" : "support@example.com"),
+  ownerName: env("NEXT_PUBLIC_OWNER_NAME") ?? (isProd ? "Атамас Никита Валериевич" : "Заполните позже"),
+  ownerInn: env("NEXT_PUBLIC_OWNER_INN") ?? (isProd ? "236903393492" : "Заполните позже"),
+  ownerStatus: env("NEXT_PUBLIC_OWNER_STATUS") ?? (isProd ? "самозанятый (НПД)" : "Самозанятый (НПД)"),
+  ownerAddress: env("NEXT_PUBLIC_OWNER_ADDRESS") ?? (isProd ? "352702, Россия, Тимашевск, Виноградная, д.18" : ""),
+  ownerAddressShort: env("NEXT_PUBLIC_OWNER_ADDRESS_SHORT") ?? (isProd ? "г. Тимашевск, Россия" : "")
 } as const;

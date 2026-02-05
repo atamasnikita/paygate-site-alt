@@ -9,34 +9,28 @@ export const metadata: Metadata = {
 
 export default function ContactsPage() {
   const requisites = [
-    config.ownerName ? { label: "ФИО", value: config.ownerName } : null,
+    config.ownerName ? { label: "Исполнитель", value: config.ownerName } : null,
+    config.ownerStatus ? { label: "Статус", value: config.ownerStatus } : null,
     config.ownerInn ? { label: "ИНН", value: config.ownerInn } : null,
-    config.ownerStatus ? { label: "Статус", value: config.ownerStatus } : null
+    config.supportEmail ? { label: "Email", value: config.supportEmail } : null,
+    config.ownerAddress ? { label: "Адрес для корреспонденции", value: config.ownerAddress } : null
   ].filter(Boolean) as { label: string; value: string }[];
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-14 sm:py-16">
       <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">Контакты</h1>
       <p className="mt-3 text-slate-600 max-w-2xl">
-        Если нужна помощь с подключением Robokassa или настройкой доступа — напишите нам.
+        Если нужна помощь с подключением Robokassa или настройкой доступа — напишите нам на e-mail.
       </p>
 
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div className="text-sm font-medium">Поддержка</div>
-          <div className="mt-3 space-y-2 text-sm text-slate-600">
-            <div>
-              Email:{" "}
-              <a className="text-brand-700 hover:text-brand-800" href={`mailto:${config.supportEmail}`}>
-                {config.supportEmail}
-              </a>
-            </div>
-            <div>
-              Telegram:{" "}
-              <a className="text-brand-700 hover:text-brand-800" href={config.supportTg} target="_blank" rel="noreferrer">
-                {config.supportTg.replace(/^https?:\/\/(www\.)?/u, "")}
-              </a>
-            </div>
+          <div className="text-sm font-medium">Контакты</div>
+          <div className="mt-3 text-sm text-slate-600">
+            Email:{" "}
+            <a className="text-brand-700 hover:text-brand-800" href={`mailto:${config.supportEmail}`}>
+              {config.supportEmail}
+            </a>
           </div>
         </div>
 
@@ -73,4 +67,3 @@ export default function ContactsPage() {
     </div>
   );
 }
-

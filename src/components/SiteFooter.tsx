@@ -11,7 +11,7 @@ export function SiteFooter() {
   ].filter(Boolean) as { label: string; value: string }[];
 
   return (
-    <footer className="border-t border-slate-100 bg-white">
+    <footer className="relative z-20 border-t border-slate-100 bg-white">
       <div className="mx-auto max-w-5xl px-4 py-10">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div className="space-y-2">

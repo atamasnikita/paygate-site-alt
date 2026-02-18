@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { config } from "@/config";
@@ -682,7 +681,6 @@ export function LandingV3Client() {
       <section className="mx-auto max-w-6xl px-4 pb-16 sm:pb-20">
         <div className={styles.bottomCta}>
           <div className="max-w-3xl">
-            <div className="text-xs uppercase tracking-[0.18em] text-white/80">PayGate v3</div>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">Запускай платный Telegram без лишней инфраструктуры</h2>
             <p className="mt-3 text-sm leading-6 text-white/90 sm:text-base">
               Подключи бота, настрой чат и начни продажи. Дальше PayGate держит процесс под контролем: платежи, доступ, статусы и исключения.
@@ -698,9 +696,6 @@ export function LandingV3Client() {
                 Подключить бота
               </a>
             </div>
-            <Link href="/" className="mt-4 inline-flex text-sm font-medium text-white/85 underline decoration-white/45 underline-offset-2 hover:text-white">
-              Сравнить с текущей версией
-            </Link>
           </div>
         </div>
       </section>

@@ -4,7 +4,13 @@ import { useId, useState } from "react";
 
 export type FaqItem = { q: string; a: string };
 
-export function FaqAccordion({ items }: { items: FaqItem[] }) {
+export function FaqAccordion({
+  items,
+  onToggle
+}: {
+  items: FaqItem[];
+  onToggle?: (params: { index: number; question: string; open: boolean }) => void;
+}) {
   const baseId = useId();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -22,7 +28,13 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
               className="w-full flex items-start justify-between gap-4 text-left"
               aria-controls={panelId}
               aria-expanded={isOpen}
-              onClick={() => setOpenIndex((v) => (v === idx ? null : idx))}
+              onClick={() =>
+                setOpenIndex((v) => {
+                  const next = v === idx ? null : idx;
+                  onToggle?.({ index: idx, question: item.q, open: next === idx });
+                  return next;
+                })
+              }
             >
               <div className="font-medium text-slate-900">{item.q}</div>
               <div className="mt-0.5 text-slate-400" aria-hidden="true">
@@ -55,4 +67,3 @@ function ChevronIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-

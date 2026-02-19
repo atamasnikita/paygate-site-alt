@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { config } from "@/config";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -38,6 +38,11 @@ export const metadata: Metadata = {
     description:
       "Оплата подписчиков идёт напрямую в вашу Robokassa. PayGate выдаёт доступ и исключает пользователей с просроченной подпиской."
   }
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+  colorScheme: "light"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

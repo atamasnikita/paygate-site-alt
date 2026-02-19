@@ -12,6 +12,7 @@
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  opacity: 0.85;
   background:
     radial-gradient(1240px 620px at 100% -18%, rgba(168, 85, 247, 0.13), transparent 60%),
     radial-gradient(980px 520px at -12% 12%, rgba(239, 68, 68, 0.09), transparent 63%),
@@ -158,9 +159,10 @@
 }
 
 .journeyDesktop {
+  --journey-gap: 10px;
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 10px;
+  gap: var(--journey-gap);
 }
 
 .journeyNode {
@@ -232,6 +234,11 @@
   gap: 7px;
 }
 
+.journeyNode .journeyStatusWrap {
+  width: 100%;
+  justify-content: center;
+}
+
 .journeyStatusText {
   animation: journeyStatusFade 0.36s ease;
 }
@@ -266,7 +273,7 @@
 }
 
 .journeyConnectors {
-  margin: 10px 16px 2px;
+  margin: 10px 0 2px;
   display: grid;
   gap: 10px;
 }
@@ -431,6 +438,10 @@
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(241, 245, 249, 0.9));
   padding: 12px;
   box-shadow: 0 22px 44px rgba(15, 23, 42, 0.1);
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .demoPhoneTop {
@@ -454,7 +465,11 @@
   border-radius: 18px;
   background: #f7f7f7;
   overflow: hidden;
-  min-height: 500px;
+  width: 100%;
+  min-width: 0;
+  height: 540px;
+  min-height: 540px;
+  max-height: 540px;
   display: flex;
   flex-direction: column;
 }
@@ -498,7 +513,8 @@
 .demoScreen {
   flex: 1;
   min-height: 0;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: 10px;
   animation: demoScreenIn 0.36s cubic-bezier(0.22, 0.61, 0.36, 1);
   will-change: transform, opacity;
@@ -515,6 +531,7 @@
 .demoPanel {
   display: grid;
   gap: 10px;
+  min-width: 0;
 }
 
 .demoPanelStack {
@@ -527,6 +544,7 @@
   background: #fff;
   padding: 12px;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+  min-width: 0;
 }
 
 .demoPanelHeadRow {
@@ -535,6 +553,7 @@
   justify-content: space-between;
   gap: 8px;
   flex-wrap: wrap;
+  min-width: 0;
 }
 
 .demoPanelTitle {
@@ -697,6 +716,13 @@
   padding: 4px 10px;
   font-size: 11px;
   color: #4b5563;
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .demoChipActive {
@@ -750,6 +776,7 @@
   border-radius: 10px;
   padding: 8px;
   background: #fff;
+  min-width: 0;
 }
 
 .demoListRowMain {
@@ -768,6 +795,10 @@
   color: #334155;
   text-transform: uppercase;
   flex: 0 0 auto;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .demoStatusOk {
@@ -785,6 +816,7 @@
   border-radius: 11px;
   padding: 9px;
   background: #fff;
+  min-width: 0;
 }
 
 .demoChatKpis {
@@ -832,6 +864,7 @@
   gap: 2px;
   padding: 4px 3px;
   transition: color 0.22s ease, transform 0.2s ease;
+  min-width: 0;
 }
 
 .demoTabbarBtnActive {
@@ -851,6 +884,9 @@
   font-size: 10px;
   line-height: 1;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .beforeCard {
@@ -1013,6 +1049,39 @@
 }
 
 @media (max-width: 767px) {
+  .pageBackdrop {
+    opacity: 0.42;
+    background:
+      radial-gradient(1180px 600px at 100% -18%, rgba(168, 85, 247, 0.08), transparent 60%),
+      radial-gradient(940px 500px at -12% 12%, rgba(239, 68, 68, 0.055), transparent 63%),
+      radial-gradient(860px 470px at 22% 60%, rgba(59, 130, 246, 0.055), transparent 69%),
+      radial-gradient(980px 500px at 62% 8%, rgba(56, 189, 248, 0.06), transparent 64%),
+      radial-gradient(820px 430px at 94% 74%, rgba(244, 63, 94, 0.05), transparent 67%),
+      #f8fafc;
+  }
+
+  .pageGlowA,
+  .pageGlowB,
+  .pageGlowC {
+    opacity: 0.72;
+    filter: blur(66px);
+  }
+
+  .pageGlowA {
+    width: 460px;
+    height: 460px;
+  }
+
+  .pageGlowB {
+    width: 500px;
+    height: 500px;
+  }
+
+  .pageGlowC {
+    width: 440px;
+    height: 440px;
+  }
+
   .journeyDesktop,
   .journeyConnectors {
     display: none;
@@ -1052,7 +1121,9 @@
   }
 
   .demoApp {
-    min-height: 470px;
+    height: 500px;
+    min-height: 500px;
+    max-height: 500px;
   }
 
   .demoScreen {

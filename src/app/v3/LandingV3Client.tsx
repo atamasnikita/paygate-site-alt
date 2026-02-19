@@ -7,7 +7,6 @@ import { FaqAccordion } from "@/components/FaqAccordion";
 import styles from "./v3.module.css";
 
 type JourneyStatus = "ready" | "needs_action" | "done";
-type JourneyConnectorStatus = "ready" | "active" | "done";
 type DemoMode = "before" | "after";
 type DemoTab = "status" | "chats" | "storefront" | "provider" | "logs";
 type DemoTransitionDirection = "none" | "forward" | "backward";
@@ -188,10 +187,10 @@ function getJourneyNodeStatus(step: number, index: number): JourneyStatus {
   return "ready";
 }
 
-function getJourneyConnectorStatus(step: number, index: number): JourneyConnectorStatus {
+function getJourneyConnectorStatus(step: number, index: number): "ready" | "active" | "done" {
   if (step >= JOURNEY_NODES.length) return "done";
   if (index < step) return "done";
-  if (index === step && step < JOURNEY_NODES.length - 1) return "active";
+  if (index === step) return "active";
   return "ready";
 }
 
@@ -484,10 +483,10 @@ export function LandingV3Client() {
 
               <div
                 className={styles.journeyConnectors}
-                style={{ gridTemplateColumns: `repeat(${JOURNEY_NODES.length - 1}, minmax(0, 1fr))` }}
+                style={{ gridTemplateColumns: `repeat(${JOURNEY_NODES.length}, minmax(0, 1fr))` }}
                 aria-hidden="true"
               >
-                {JOURNEY_NODES.slice(0, -1).map((node, index) => {
+                {JOURNEY_NODES.map((node, index) => {
                   const connectorStatus = getJourneyConnectorStatus(journeyStep, index);
                   return (
                     <span
@@ -1057,7 +1056,7 @@ function DemoChatsTab() {
             <div className={styles.demoPanelTitle}>Чаты</div>
             <div className={styles.demoMuted}>{DEMO_DATA.chats.totalLabel}</div>
           </div>
-          <span className={`${styles.demoStatus} ${styles.demoStatusWarn}`}>Требует внимания: {DEMO_DATA.chats.needsAttention}</span>
+          <span className={`${styles.demoStatus} ${styles.demoStatusWarn}`}>Внимание: {DEMO_DATA.chats.needsAttention}</span>
         </div>
 
         <div className={styles.demoFilterRow}>
@@ -1141,7 +1140,7 @@ function DemoProviderTab() {
         <div className={styles.demoPanelTitle}>Данные магазина</div>
         <div className={styles.demoMuted}>Касса подключена. Секреты скрыты.</div>
         <div className={styles.demoFilterRow}>
-          <span className={`${styles.demoChip} ${styles.demoChipActive}`}>MerchantLogin: {DEMO_DATA.provider.merchantLogin}</span>
+          <span className={`${styles.demoChip} ${styles.demoChipActive}`}>Merchant: {DEMO_DATA.provider.merchantLogin}</span>
           <span className={styles.demoChip}>Pass1 сохранён</span>
           <span className={styles.demoChip}>Pass2 сохранён</span>
         </div>

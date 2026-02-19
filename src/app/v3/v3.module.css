@@ -972,6 +972,311 @@
   color: #9f1239;
 }
 
+.storefrontDemoLayout {
+  margin-top: 16px;
+  display: grid;
+  gap: 14px;
+}
+
+.storefrontDemoCard {
+  --storefront-accent: #0ea5e9;
+  --storefront-accent-soft: rgba(239, 246, 255, 0.84);
+  --storefront-accent-border: rgba(56, 189, 248, 0.34);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.9));
+  padding: 16px;
+  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.08);
+}
+
+.storefrontDemoBadge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(59, 130, 246, 0.24);
+  background: rgba(239, 246, 255, 0.85);
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #1d4ed8;
+}
+
+.storefrontDemoHeader {
+  margin-top: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.storefrontDemoAvatar {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: rgba(241, 245, 249, 0.9);
+  color: #334155;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.storefrontDemoAvatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.storefrontDemoHeading {
+  min-width: 0;
+  flex: 1;
+}
+
+.storefrontDemoNameRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.storefrontDemoTitle {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.3;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.storefrontDemoCategory {
+  border-radius: 999px;
+  border: 1px solid var(--storefront-accent-border);
+  background: var(--storefront-accent-soft);
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--storefront-accent);
+}
+
+.storefrontDemoText {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.storefrontDemoPriceRow {
+  margin-top: 12px;
+  border: 1px solid var(--storefront-accent-border);
+  border-radius: 14px;
+  background: var(--storefront-accent-soft);
+  padding: 11px 12px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.storefrontDemoPrice {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.storefrontDemoPriceNote {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.storefrontDemoBullets {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.storefrontDemoBullets li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 13px;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.storefrontDemoBullets li::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--storefront-accent);
+}
+
+.storefrontDemoCta {
+  margin-top: 12px;
+  width: 100%;
+  min-height: 46px;
+  border-radius: 12px;
+  border: 0;
+  background: #cbd5e1;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: not-allowed;
+}
+
+.storefrontDemoCtaHint {
+  margin: 8px 0 0;
+  text-align: center;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.storefrontDemoDocs {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.storefrontDemoDocs > span {
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: #fff;
+  padding: 4px 10px;
+  font-size: 11px;
+  color: #475569;
+}
+
+.storefrontDemoAccent {
+  margin-top: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.26);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.86);
+  padding: 8px 10px;
+  display: grid;
+  gap: 7px;
+}
+
+.storefrontDemoAccentLabel {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.storefrontDemoAccentRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.storefrontDemoAccentSwatch {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0;
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.16);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.storefrontDemoAccentSwatch:hover {
+  transform: scale(1.08);
+}
+
+.storefrontDemoAccentActive {
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px var(--storefront-accent-border);
+}
+
+.storefrontDemoAccentOcean {
+  background: #0ea5e9;
+}
+
+.storefrontDemoAccentEmerald {
+  background: #10b981;
+}
+
+.storefrontDemoAccentAmber {
+  background: #f59e0b;
+}
+
+.storefrontDemoAccentRose {
+  background: #f43f5e;
+}
+
+.storefrontDemoAccentSlate {
+  background: #64748b;
+}
+
+.storefrontDemoAccentIndigo {
+  background: #6366f1;
+}
+
+.storefrontDemoDisabled {
+  margin-top: 12px;
+  border-radius: 12px;
+  border: 1px dashed rgba(56, 189, 248, 0.44);
+  background: rgba(239, 246, 255, 0.58);
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #475569;
+  text-align: center;
+}
+
+.storefrontDemoPitch {
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  align-self: start;
+}
+
+.storefrontDemoList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.storefrontDemoList li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #1e293b;
+}
+
+.storefrontDemoList li::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #0f9cf5;
+}
+
+.storefrontDemoHint {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #64748b;
+}
+
 .featureCard {
   border: 1px solid rgba(148, 163, 184, 0.26);
   border-radius: 18px;
@@ -1219,6 +1524,10 @@
   .journeyAfterLine {
     align-items: flex-start;
   }
+
+  .storefrontDemoTitle {
+    font-size: 17px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -1239,6 +1548,12 @@
 
   .demoLayout {
     grid-template-columns: 260px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .storefrontDemoLayout {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 16px;
     align-items: start;
   }
 }

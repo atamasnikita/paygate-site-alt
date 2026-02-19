@@ -9,6 +9,7 @@ export function SiteHeader() {
   const landingLinks = [
     { href: "#how-it-works", label: "Как это работает" },
     { href: "#miniapp-demo", label: "Mini App" },
+    { href: "#storefront-demo", label: "Витрина" },
     { href: "#features", label: "Возможности" },
     { href: "#pricing", label: "Тарифы" },
     { href: "#faq", label: "Вопросы" }

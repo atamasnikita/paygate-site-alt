@@ -1,7 +1,9 @@
 "use client";
 
-import type { ReactNode } from "react";
-import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import type { CSSProperties, ReactNode } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { config } from "@/config";
 import { FaqAccordion } from "@/components/FaqAccordion";
 import styles from "./v3.module.css";
@@ -10,6 +12,7 @@ type JourneyStatus = "ready" | "needs_action" | "done";
 type DemoMode = "before" | "after";
 type DemoTab = "status" | "chats" | "storefront" | "provider" | "logs";
 type DemoTransitionDirection = "none" | "forward" | "backward";
+type StorefrontAccent = "ocean" | "emerald" | "amber" | "rose" | "slate" | "indigo";
 
 const EVENT_ENDPOINT = process.env.NEXT_PUBLIC_EVENTS_ENDPOINT?.trim() || "";
 
@@ -28,8 +31,8 @@ const FEATURES = [
     text: "Настраиваемые правила: льготный период, уведомления и действия при просрочке."
   },
   {
-    title: "Витрина продавца на paygt.ru",
-    text: "Без сайта: публичная страница продавца с описанием, условиями и контактами."
+    title: "Без комиссии за каждую транзакцию",
+    text: "PayGate не удерживает процент с каждого платежа. Вы работаете по понятному тарифу, а деньги идут напрямую через вашу Robokassa."
   },
   {
     title: "Оферта + PDF одним кликом",
@@ -57,6 +60,56 @@ const DEMO_TABS: Array<{ id: DemoTab; label: string; subtitle: string }> = [
   { id: "logs", label: "Журнал", subtitle: "События и действия" }
 ] as const;
 
+const STOREFRONT_ACCENTS: Array<{ id: StorefrontAccent; label: string; color: string; soft: string; border: string }> = [
+  {
+    id: "ocean",
+    label: "Океан",
+    color: "#0ea5e9",
+    soft: "rgba(239, 246, 255, 0.84)",
+    border: "rgba(56, 189, 248, 0.34)"
+  },
+  {
+    id: "emerald",
+    label: "Изумруд",
+    color: "#10b981",
+    soft: "rgba(236, 253, 245, 0.88)",
+    border: "rgba(16, 185, 129, 0.36)"
+  },
+  {
+    id: "amber",
+    label: "Янтарь",
+    color: "#f59e0b",
+    soft: "rgba(255, 251, 235, 0.9)",
+    border: "rgba(245, 158, 11, 0.38)"
+  },
+  {
+    id: "rose",
+    label: "Роза",
+    color: "#f43f5e",
+    soft: "rgba(255, 241, 242, 0.9)",
+    border: "rgba(244, 63, 94, 0.36)"
+  },
+  {
+    id: "slate",
+    label: "Сланец",
+    color: "#64748b",
+    soft: "rgba(241, 245, 249, 0.92)",
+    border: "rgba(100, 116, 139, 0.38)"
+  },
+  {
+    id: "indigo",
+    label: "Индиго",
+    color: "#6366f1",
+    soft: "rgba(238, 242, 255, 0.9)",
+    border: "rgba(99, 102, 241, 0.36)"
+  }
+];
+
+function resolveStorefrontAccent(value: string | null): StorefrontAccent {
+  if (!value) return "ocean";
+  return STOREFRONT_ACCENTS.some((accent) => accent.id === value) ? (value as StorefrontAccent) : "ocean";
+}
+
 const DEMO_DATA = {
   overview: {
     active: "1 284",
@@ -82,7 +135,7 @@ const DEMO_DATA = {
     needsAttention: "1",
     rows: [
       {
-        title: "Крипто Клуб",
+        title: "Вокруг света",
         adminOk: true,
         rules: "льготный период 24ч · исключение включено",
         subscribers: "620",
@@ -109,8 +162,8 @@ const DEMO_DATA = {
   },
   storefront: {
     status: "опубликована",
-    draftUrl: "m.paygt.ru/crypto-club?draft=1",
-    publicUrl: "m.paygt.ru/crypto-club",
+    draftUrl: "m.paygt.ru/travel-club?draft=1",
+    publicUrl: "m.paygt.ru/travel-club",
     offerTitle: "Премиум 30 дней",
     offerPrice: "499 ₽ / 30 дн."
   },
@@ -119,7 +172,7 @@ const DEMO_DATA = {
     summary: "Статус: подключено • режим: тестовый",
     webhookLabel: "Ссылка для уведомлений",
     webhookValue: "api.paygt.ru/webhooks/robokassa/subscriber",
-    merchantLogin: "crypto_club"
+    merchantLogin: "travel_club"
   },
   logs: {
     total: "1 248",
@@ -231,10 +284,27 @@ export function LandingV3Client() {
   const [demoMode, setDemoMode] = useState<DemoMode>("after");
   const [demoTab, setDemoTab] = useState<DemoTab>("status");
   const [demoTransition, setDemoTransition] = useState<DemoTransitionDirection>("none");
+  const [storefrontAccent, setStorefrontAccent] = useState<StorefrontAccent>(() => {
+    if (typeof window === "undefined") return "ocean";
+    const query = new URLSearchParams(window.location.search);
+    return resolveStorefrontAccent(query.get("accent"));
+  });
   const pricingRef = useRef<HTMLElement | null>(null);
   const journeyRef = useRef<HTMLElement | null>(null);
   const pageRef = useRef<HTMLDivElement | null>(null);
   const completeTrackedRef = useRef(false);
+  const activeStorefrontAccent = STOREFRONT_ACCENTS.find((item) => item.id === storefrontAccent) ?? STOREFRONT_ACCENTS[0];
+  const storefrontAccentStyle = {
+    "--storefront-accent": activeStorefrontAccent.color,
+    "--storefront-accent-soft": activeStorefrontAccent.soft,
+    "--storefront-accent-border": activeStorefrontAccent.border
+  } as CSSProperties;
+
+  useLayoutEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    const accentFromUrl = resolveStorefrontAccent(query.get("accent"));
+    setStorefrontAccent((prev) => (prev === accentFromUrl ? prev : accentFromUrl));
+  }, []);
 
   useEffect(() => {
     const node = pricingRef.current;
@@ -598,6 +668,117 @@ export function LandingV3Client() {
         </Reveal>
       </section>
 
+      <section id="storefront-demo" className="mx-auto max-w-6xl px-4 py-14 sm:py-16">
+        <SectionHead
+          eyebrow="Витрина + оферта"
+          title="Покажите подписчикам аккуратную витрину на вашем домене"
+          text="Без отдельного сайта: витрина, оферта и правила возврата уже готовы. Ссылку можно использовать для модерации в платежной системе."
+        />
+
+        <Reveal>
+          <div className={styles.storefrontDemoLayout}>
+            <article className={styles.storefrontDemoCard} style={storefrontAccentStyle} aria-label="Пример витрины владельца канала">
+              <div className={styles.storefrontDemoBadge}>Демо-страница · без оплаты</div>
+              <div className={styles.storefrontDemoHeader}>
+                <div className={styles.storefrontDemoAvatar}>
+                  <Image
+                    src="/storefront-travel.webp"
+                    alt="Логотип канала о путешествиях"
+                    width={44}
+                    height={44}
+                    className={styles.storefrontDemoAvatarImage}
+                  />
+                </div>
+                <div className={styles.storefrontDemoHeading}>
+                  <div className={styles.storefrontDemoNameRow}>
+                    <h3 className={styles.storefrontDemoTitle}>Вокруг света</h3>
+                    <span className={styles.storefrontDemoCategory}>Путешествия</span>
+                  </div>
+                  <p className={styles.storefrontDemoText}>
+                    Маршруты, лучшие локации, бюджетные советы и готовые гайды для поездок без хаоса.
+                  </p>
+                </div>
+              </div>
+
+              <div className={styles.storefrontDemoPriceRow}>
+                <span className={styles.storefrontDemoPrice}>499 ₽</span>
+                <span className={styles.storefrontDemoPriceNote}>30 дней доступа</span>
+              </div>
+
+              <ul className={styles.storefrontDemoBullets}>
+                <li>Готовые маршруты и подборки стран</li>
+                <li>Практичные чек-листы перед поездкой</li>
+                <li>Закрытый чат путешественников</li>
+              </ul>
+
+              <button type="button" disabled className={styles.storefrontDemoCta}>
+                Открыть в Telegram
+              </button>
+              <p className={styles.storefrontDemoCtaHint}>В демо доступ и покупка отключены.</p>
+
+              <div className={styles.storefrontDemoDocs}>
+                <span>Оферта</span>
+                <span>Возвраты</span>
+                <span>Контакты</span>
+              </div>
+
+              <div className={styles.storefrontDemoAccent}>
+                <div className={styles.storefrontDemoAccentLabel}>Акцентный цвет витрины</div>
+                <div className={styles.storefrontDemoAccentRow}>
+                  {STOREFRONT_ACCENTS.map((accent) => (
+                    <button
+                      key={accent.id}
+                      type="button"
+                      aria-label={`Выбрать акцент: ${accent.label}`}
+                      aria-pressed={storefrontAccent === accent.id}
+                      className={`${styles.storefrontDemoAccentSwatch} ${
+                        accent.id === "ocean"
+                          ? styles.storefrontDemoAccentOcean
+                          : accent.id === "emerald"
+                          ? styles.storefrontDemoAccentEmerald
+                          : accent.id === "amber"
+                          ? styles.storefrontDemoAccentAmber
+                          : accent.id === "rose"
+                          ? styles.storefrontDemoAccentRose
+                          : accent.id === "slate"
+                          ? styles.storefrontDemoAccentSlate
+                          : styles.storefrontDemoAccentIndigo
+                      } ${storefrontAccent === accent.id ? styles.storefrontDemoAccentActive : ""}`}
+                      onClick={() => {
+                        setStorefrontAccent(accent.id);
+                        trackEvent("storefront_demo_accent_change", { accent: accent.id });
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div className={styles.storefrontDemoDisabled}>Публичная ссылка подходит для модерации платежной системы</div>
+            </article>
+
+            <div className={styles.storefrontDemoPitch}>
+              <ul className={styles.storefrontDemoList}>
+                <li>Сайт не нужен</li>
+                <li>Оферта и возвраты встроены</li>
+                <li>Ссылка готова для модерации</li>
+                <li>Черновик и публикация в один клик</li>
+                <li>Оферта в PDF для проверки модератором</li>
+              </ul>
+
+              <Link
+                href={`/demo/storefront?accent=${storefrontAccent}`}
+                rel="nofollow"
+                className="inline-flex min-h-12 items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
+                onClick={() => trackEvent("storefront_demo_click", { placement: "storefront_block", accent: storefrontAccent })}
+              >
+                Посмотреть пример витрины
+              </Link>
+
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
       <section id="features" className="mx-auto max-w-6xl px-4 py-14 sm:py-16">
         <SectionHead eyebrow="Возможности" title="Инструменты для владельца канала, которые реально работают в бою" />
         <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -931,6 +1112,14 @@ function DemoPhoneScreen({
   );
 }
 
+function StorefrontIcon({ className }: { className?: string }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" className={className}>
+      <path d="M18 9.9V20H2V9.9a4.2 4.2 0 0 0 3-.4V14h10V9.5a4.3 4.3 0 0 0 3 .4zM3 0h4l-.7 6A3.4 3.4 0 0 1 3 9C1.3 9 .4 7.7 1 6.1L3 0zm5 0h4l.7 6.3c.2 1.5-.9 2.7-2.4 2.7h-.6A2.4 2.4 0 0 1 7.3 6.3L8 0zm5 0h4l2 6.1c.6 1.6-.3 2.9-1.9 2.9a3.4 3.4 0 0 1-3.3-3L13 0z" fill="currentColor" />
+    </svg>
+  );
+}
+
 function DemoTabIcon({ tab }: { tab: DemoTab }) {
   if (tab === "status") {
     return (
@@ -954,9 +1143,7 @@ function DemoTabIcon({ tab }: { tab: DemoTab }) {
   }
   if (tab === "storefront") {
     return (
-      <svg width="15" height="15" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <path d="M18 9.9V20H2V9.9a4.2 4.2 0 0 0 3-.4V14h10V9.5a4.3 4.3 0 0 0 3 .4zM3 0h4l-.7 6A3.4 3.4 0 0 1 3 9C1.3 9 .4 7.7 1 6.1L3 0zm5 0h4l.7 6.3c.2 1.5-.9 2.7-2.4 2.7h-.6A2.4 2.4 0 0 1 7.3 6.3L8 0zm5 0h4l2 6.1c.6 1.6-.3 2.9-1.9 2.9a3.4 3.4 0 0 1-3.3-3L13 0z" fill="currentColor" />
-      </svg>
+      <StorefrontIcon className="h-[15px] w-[15px]" />
     );
   }
   if (tab === "provider") {

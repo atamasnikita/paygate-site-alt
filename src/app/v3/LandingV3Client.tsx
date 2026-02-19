@@ -828,13 +828,6 @@ export function LandingV3Client() {
                 >
                   Подключить бота
                 </a>
-                <a
-                  href={`mailto:${config.supportEmail}`}
-                  className="inline-flex min-h-12 items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
-                  onClick={() => trackEvent("pricing_secondary_cta_click", { placement: "pricing", type: "mailto" })}
-                >
-                  Задать вопрос
-                </a>
               </div>
             </article>
           </Reveal>

@@ -7,6 +7,33 @@ const description =
   "Монетизация Telegram без отдельного сайта: витрина, оферта и возвраты на paygt.ru. Деньги идут напрямую в Robokassa владельца канала.";
 const pageUrl = `${config.siteUrl}/`;
 const ogImage = `${config.siteUrl}/og-v3.png`;
+const landingSections = [
+  { name: "Как это работает", path: "#how-it-works" },
+  { name: "Mini App", path: "#miniapp-demo" },
+  { name: "Витрина", path: "#storefront-demo" },
+  { name: "Возможности", path: "#features" },
+  { name: "Тарифы", path: "#pricing" },
+  { name: "Вопросы", path: "#faq" }
+] as const;
+
+const landingStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${config.siteUrl}/#website`,
+      url: pageUrl,
+      name: "PayGate",
+      inLanguage: "ru-RU",
+      description
+    },
+    {
+      "@type": "SiteNavigationElement",
+      name: landingSections.map((section) => section.name),
+      url: landingSections.map((section) => `${config.siteUrl}/${section.path}`)
+    }
+  ]
+};
 
 export const metadata: Metadata = {
   title,
@@ -30,5 +57,10 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return <LandingV3Client />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(landingStructuredData) }} />
+      <LandingV3Client />
+    </>
+  );
 }

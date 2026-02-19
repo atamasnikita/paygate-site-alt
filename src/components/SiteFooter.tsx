@@ -22,19 +22,7 @@ export function SiteFooter() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-            <div className="space-y-2">
-              <div className="text-sm font-medium">Контакты</div>
-              <div className="text-sm text-slate-600">
-                <div>
-                  Email:{" "}
-                  <a className="hover:text-slate-900" href={`mailto:${config.supportEmail}`}>
-                    {config.supportEmail}
-                  </a>
-                </div>
-              </div>
-            </div>
-
+          <div className="grid grid-cols-1 gap-8">
             <div className="space-y-2">
               <div className="text-sm font-medium">Реквизиты</div>
               <div className="text-sm text-slate-600 space-y-1">

@@ -23,17 +23,7 @@ export default function ContactsPage() {
         Если нужна помощь с подключением Robokassa или настройкой доступа — напишите нам на e-mail.
       </p>
 
-      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div className="text-sm font-medium">Контакты</div>
-          <div className="mt-3 text-sm text-slate-600">
-            Email:{" "}
-            <a className="text-brand-700 hover:text-brand-800" href={`mailto:${config.supportEmail}`}>
-              {config.supportEmail}
-            </a>
-          </div>
-        </div>
-
+      <div className="mt-10 grid grid-cols-1 gap-4">
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <div className="text-sm font-medium">Реквизиты</div>
           <div className="mt-3 space-y-2 text-sm text-slate-600">

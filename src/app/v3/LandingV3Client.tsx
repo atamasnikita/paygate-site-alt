@@ -15,17 +15,17 @@ const EVENT_ENDPOINT = process.env.NEXT_PUBLIC_EVENTS_ENDPOINT?.trim() || "";
 
 const HERO_BADGES = [
   { label: "Онбординг", value: "~10 минут" },
-  { label: "Авто-исключение", value: "grace + правила" },
-  { label: "Free", value: "до 5 000 ₽/мес" },
-  { label: "Pro", value: "490 ₽ / 30 дней" }
+  { label: "Авто-исключение", value: "льготный период + правила" },
+  { label: "Бесплатный", value: "до 5 000 ₽/мес" },
+  { label: "Платный", value: "490 ₽ / 30 дней" }
 ] as const;
 
 const MINIAPP_SECTIONS = ["Сводка", "Чаты", "Витрина", "Провайдер", "Журнал", "Поддержка"] as const;
 
 const FEATURES = [
   {
-    title: "Авто-исключение + грейс-период",
-    text: "Настраиваемые правила: грейс, уведомления и действия при просрочке."
+    title: "Авто-исключение + льготный период",
+    text: "Настраиваемые правила: льготный период, уведомления и действия при просрочке."
   },
   {
     title: "Витрина продавца на paygt.ru",
@@ -37,7 +37,7 @@ const FEATURES = [
   },
   {
     title: "Статусы подписок",
-    text: "Active / Grace / Expired видны сразу, без ручных таблиц."
+    text: "Активные / Льготный период / Просроченные видны сразу, без ручных таблиц."
   },
   {
     title: "Деньги напрямую в Robokassa",
@@ -52,8 +52,8 @@ const FEATURES = [
 const DEMO_TABS: Array<{ id: DemoTab; label: string; subtitle: string }> = [
   { id: "status", label: "Сводка", subtitle: "Оборот и статусы" },
   { id: "chats", label: "Чаты", subtitle: "Подписчики и тарифы" },
-  { id: "storefront", label: "Витрина", subtitle: "Публикация и оффер" },
-  { id: "provider", label: "Провайдер", subtitle: "Robokassa и webhook" },
+  { id: "storefront", label: "Витрина", subtitle: "Публикация и тариф" },
+  { id: "provider", label: "Провайдер", subtitle: "Robokassa и уведомления" },
   { id: "logs", label: "Журнал", subtitle: "События и действия" }
 ] as const;
 
@@ -62,7 +62,7 @@ const DEMO_DATA = {
     active: "1 284",
     grace: "96",
     expired: "14",
-    chats: "5",
+    chats: "3",
     monthTurnover: "84 900 ₽"
   },
   status: {
@@ -73,51 +73,51 @@ const DEMO_DATA = {
     bars: [34, 46, 28, 55, 72, 49, 62] as const,
     subscriptions: [
       { tone: "active", label: "Активные", hint: "Подписка действует", value: "1 284" },
-      { tone: "grace", label: "В грейсе", hint: "Льготный период", value: "96" },
+      { tone: "grace", label: "Льготный период", hint: "Подписка скоро истечет", value: "96" },
       { tone: "expired", label: "Просроченные", hint: "Нужно продлить", value: "14" }
     ] as const
   },
   chats: {
-    totalLabel: "3 из 3 подключено",
+    totalLabel: "3 из 3 подключены",
     needsAttention: "1",
     rows: [
       {
-        title: "Crypto Club",
+        title: "Крипто Клуб",
         adminOk: true,
-        rules: "грейс 24ч · исключение включено",
-        subscribers: "520",
-        tariffs: "3 активн.",
+        rules: "льготный период 24ч · исключение включено",
+        subscribers: "620",
+        tariffs: "3",
         turnover: "39 400 ₽"
       },
       {
-        title: "Premium News",
+        title: "Премиум Новости",
         adminOk: true,
-        rules: "грейс 24ч · исключение включено",
-        subscribers: "310",
-        tariffs: "2 активн.",
+        rules: "льготный период 24ч · исключение включено",
+        subscribers: "510",
+        tariffs: "2",
         turnover: "28 900 ₽"
       },
       {
-        title: "AI Digest",
+        title: "Дайджест ИИ",
         adminOk: false,
         rules: "нужно выдать права боту",
-        subscribers: "74",
-        tariffs: "1 активн.",
-        turnover: "6 600 ₽"
+        subscribers: "154",
+        tariffs: "1",
+        turnover: "16 600 ₽"
       }
     ] as const
   },
   storefront: {
-    status: "published",
+    status: "опубликована",
     draftUrl: "m.paygt.ru/crypto-club?draft=1",
     publicUrl: "m.paygt.ru/crypto-club",
-    offerTitle: "VIP 30 дней",
+    offerTitle: "Премиум 30 дней",
     offerPrice: "499 ₽ / 30 дн."
   },
   provider: {
-    status: "connected",
+    status: "подключена",
     summary: "Статус: подключено • режим: тестовый",
-    webhookLabel: "Result URL",
+    webhookLabel: "Ссылка для уведомлений",
     webhookValue: "api.paygt.ru/webhooks/robokassa/subscriber",
     merchantLogin: "crypto_club"
   },
@@ -125,9 +125,9 @@ const DEMO_DATA = {
     total: "1 248",
     rangeLabel: "30 дней",
     rows: [
-      { name: "Платёж подтвержден", status: "payment.paid", note: "Сегодня, 14:22 • @ivan" },
-      { name: "Подписка активирована", status: "subscription.activated", note: "Сегодня, 14:22 • @ivan" },
-      { name: "Витрина опубликована", status: "storefront.published", note: "Сегодня, 09:14 • владелец" }
+      { name: "Платеж подтвержден", status: "успешно", note: "Сегодня, 14:22 • @ivan" },
+      { name: "Подписка активирована", status: "выполнено", note: "Сегодня, 14:22 • @ivan" },
+      { name: "Витрина опубликована", status: "обновлено", note: "Сегодня, 09:14 • владелец" }
     ] as const
   }
 } as const;
@@ -145,18 +145,18 @@ const FAQ = [
   },
   { q: "Можно ли подключить несколько чатов на одного продавца?", a: "Да. Один владелец канала может управлять несколькими чатами и тарифами." },
   {
-    q: "Что будет при превышении лимита Free?",
-    a: "Сервис предупредит заранее. Новые оплаты можно временно ограничить до активации Pro, текущих подписчиков не отключаем из-за тарифа."
+    q: "Что будет при превышении лимита бесплатного тарифа?",
+    a: "Сервис предупредит заранее. Новые оплаты можно временно ограничить до перехода на платный тариф, текущих подписчиков не отключаем из-за тарифа."
   }
 ] as const;
 
 const JOURNEY_NODES = [
-  { id: "channel", title: "Создай закрытый канал", subtitle: "Chat / Channel", actionLabel: "Создаем" },
-  { id: "telegram", title: "Добавь бота админом", subtitle: "Telegram / Bot Admin", actionLabel: "Добавляем" },
-  { id: "storefront", title: "Создай витрину в mini app", subtitle: "PayGate Mini App", actionLabel: "Создаем" },
-  { id: "provider", title: "Подключи Robokassa", subtitle: "Payment Provider", actionLabel: "Подключаем" },
-  { id: "link", title: "Опубликуй ссылку на оплату", subtitle: "Public Pay Link", actionLabel: "Публикуем" },
-  { id: "result", title: "Первая оплата и доступ", subtitle: "Paid -> Access Granted", actionLabel: "Получаем" }
+  { id: "channel", title: "Создай закрытый канал", subtitle: "Закрытый чат или канал", actionLabel: "Создаем" },
+  { id: "telegram", title: "Добавь бота админом", subtitle: "Telegram: права администратора", actionLabel: "Добавляем" },
+  { id: "storefront", title: "Создай витрину в мини-приложении", subtitle: "PayGate: мини-приложение", actionLabel: "Создаем" },
+  { id: "provider", title: "Подключи Robokassa", subtitle: "Платежный провайдер", actionLabel: "Подключаем" },
+  { id: "link", title: "Опубликуй ссылку на оплату", subtitle: "Публичная ссылка на оплату", actionLabel: "Публикуем" },
+  { id: "result", title: "Первая оплата и доступ", subtitle: "Оплата -> доступ выдан", actionLabel: "Получаем" }
 ] as const;
 
 const JOURNEY_STATUS_META: Record<
@@ -414,15 +414,15 @@ export function LandingV3Client() {
             <Reveal className={styles.controlCard}>
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <div className="text-sm font-semibold text-slate-900">PayGate Control Center</div>
-                  <div className="text-xs text-slate-500">Realtime overview</div>
+                  <div className="text-sm font-semibold text-slate-900">Панель PayGate</div>
+                  <div className="text-xs text-slate-500">Сводка в реальном времени</div>
                 </div>
-                <span className={styles.liveBadge}>LIVE</span>
+                <span className={styles.liveBadge}>СЕЙЧАС</span>
               </div>
 
               <div className="mt-4 space-y-2.5">
                 <ControlRow label="Активные" value={DEMO_DATA.overview.active} tone="ok" />
-                <ControlRow label="В грейсе" value={DEMO_DATA.overview.grace} tone="warn" />
+                <ControlRow label="Льготный период" value={DEMO_DATA.overview.grace} tone="warn" />
                 <ControlRow label="Просроченные" value={DEMO_DATA.overview.expired} tone="danger" />
               </div>
 
@@ -439,7 +439,7 @@ export function LandingV3Client() {
               </div>
 
               <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-3">
-                <div className="text-xs text-slate-500">Разделы mini app</div>
+                <div className="text-xs text-slate-500">Разделы мини-приложения</div>
                 <div className="mt-2 grid grid-cols-3 gap-2 text-xs text-slate-700">
                   {MINIAPP_SECTIONS.map((section) => (
                     <span key={section} className="rounded-lg border border-slate-200 px-2 py-1 text-center">
@@ -454,7 +454,7 @@ export function LandingV3Client() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4">
-        <div className={styles.trustLine}>Robokassa-ready • Telegram-first • Без данных карт</div>
+        <div className={styles.trustLine}>Готово для Robokassa • Встроено в Telegram • Без данных карт</div>
       </section>
 
       <section id="how-it-works" ref={journeyRef} className="mx-auto max-w-6xl px-4 py-14 sm:py-16">
@@ -522,30 +522,31 @@ export function LandingV3Client() {
 
         <Reveal delay={80}>
           <div className={styles.journeyStorefrontHint}>
-            Витрину, которую вы создаете в mini app, можно использовать в Robokassa как публичную ссылку продавца с офертой и правилами возврата.
+            Витрину, которую вы создаете в мини-приложении, можно использовать в Robokassa как публичную ссылку продавца с офертой и правилами возврата.
           </div>
         </Reveal>
 
         <p className="mt-5 text-sm leading-6 text-slate-600 sm:text-base">
-          После запуска процесс работает автоматически: оплата, выдача доступа, статусы Active / Grace / Expired и исключение по вашим правилам.
+          После запуска процесс работает автоматически: оплата, выдача доступа, статусы Активные / Льготный период / Просроченные и исключение по вашим
+          правилам.
         </p>
 
         <div className={styles.journeyAfterLine}>
-          <span>После подключения всё управление — в mini app.</span>
+          <span>После подключения всё управление — в мини-приложении.</span>
           <a
             href="#miniapp-demo"
             className={styles.journeyAfterCta}
             onClick={() => trackEvent("miniapp_demo_cta_click", { placement: "after_journey" })}
           >
-            Посмотреть mini app
+            Посмотреть мини-приложение
           </a>
         </div>
       </section>
 
       <section id="miniapp-demo" className="mx-auto max-w-6xl px-4 py-14 sm:py-16">
         <SectionHead
-          eyebrow="Демо mini app"
-          title="Удобная mini app вместо кнопок в боте"
+          eyebrow="Демо мини-приложения"
+          title="Удобное мини-приложение вместо кнопок в боте"
           text="Статусы, оборот, чаты, витрина, провайдер — всё в одном месте."
         />
 
@@ -588,7 +589,7 @@ export function LandingV3Client() {
               <div className={styles.demoPhone}>
                 <div className={styles.demoPhoneTop}>
                   <span className={styles.demoLiveDot} />
-                  <span className="text-xs font-semibold tracking-wide text-slate-600">mini app live demo</span>
+                  <span className="text-xs font-semibold tracking-wide text-slate-600">демо мини-приложения</span>
                 </div>
                 <DemoPhoneScreen tab={demoTab} onTabChange={handleDemoTab} direction={demoTransition} />
               </div>
@@ -617,7 +618,7 @@ export function LandingV3Client() {
           <Reveal>
             <article className={styles.pricingCard}>
               <div className="flex items-center justify-between gap-4">
-                <div className="text-lg font-semibold text-slate-900">Free</div>
+                <div className="text-lg font-semibold text-slate-900">Бесплатный</div>
                 <div className="text-sm text-slate-600">до 5 000 ₽/мес</div>
               </div>
               <p className="mt-4 text-sm leading-6 text-slate-600">
@@ -629,7 +630,7 @@ export function LandingV3Client() {
           <Reveal delay={80}>
             <article className={styles.pricingCardPro}>
               <div className="flex items-center justify-between gap-4">
-                <div className="text-lg font-semibold text-slate-900">Pro</div>
+                <div className="text-lg font-semibold text-slate-900">Платный</div>
                 <div className="text-sm text-slate-700">490 ₽ / 30 дней</div>
               </div>
               <p className="mt-4 text-sm leading-6 text-slate-700">
@@ -659,8 +660,8 @@ export function LandingV3Client() {
         </div>
 
         <p className="mt-5 text-sm leading-6 text-slate-600">
-          Если оборот превысил 5 000 ₽/мес, мы предупредим. Новые оплаты можно временно приостановить до оплаты Pro. Текущих подписчиков не исключаем
-          автоматически только из-за тарифа.
+          Если оборот превысил 5 000 ₽/мес, мы предупредим. Новые оплаты можно временно приостановить до оплаты платного тарифа. Текущих подписчиков не
+          исключаем автоматически только из-за тарифа.
         </p>
       </section>
 
@@ -824,10 +825,18 @@ function JourneyMobileCard({
 }) {
   const meta = JOURNEY_STATUS_META[status];
   const label = status === "needs_action" ? node.actionLabel : meta.label;
+  const progressClass =
+    status === "needs_action"
+      ? styles.journeyMobileProgressFillActive
+      : status === "done"
+      ? styles.journeyMobileProgressFillDone
+      : styles.journeyMobileProgressFillReady;
 
   return (
     <article
-      className={`${styles.journeyMobileCard} ${meta.nodeClass}`}
+      className={`${styles.journeyMobileCard} ${meta.nodeClass} ${
+        status === "needs_action" ? styles.journeyMobileCardActive : status === "done" ? styles.journeyMobileCardDone : ""
+      }`}
       role="button"
       tabIndex={0}
       onClick={onClick}
@@ -846,8 +855,10 @@ function JourneyMobileCard({
           <span key={`${node.id}-${label}`} className={`${styles.journeyStatusPill} ${meta.pillClass}`}>
             <span className={styles.journeyStatusText}>{label}</span>
           </span>
-          {status === "needs_action" ? <span className={styles.journeyLoader} aria-hidden="true" /> : null}
         </div>
+      </div>
+      <div className={styles.journeyMobileProgress} aria-hidden="true">
+        <span className={`${styles.journeyMobileProgressFill} ${progressClass}`} />
       </div>
     </article>
   );
@@ -858,7 +869,7 @@ function BeforePaygateCard() {
     <div className={styles.beforeCard}>
       <div className="text-sm font-semibold text-slate-900">До PayGate</div>
       <p className="mt-2 text-sm leading-6 text-slate-600">
-        Управление через кнопки в боте и ручные списки: сложно увидеть, кто оплатил, кто в грейсе и кому уже нужно закрыть доступ.
+        Управление через кнопки в боте и ручные списки: сложно увидеть, кто оплатил, кто в льготном периоде и кому уже нужно закрыть доступ.
       </p>
       <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
         <div className={styles.beforePainItem}>Ручная проверка оплат</div>
@@ -886,9 +897,9 @@ function DemoPhoneScreen({
       <div className={styles.demoAppHeader}>
         <div>
           <div className={styles.demoAppTitle}>PayGate</div>
-          <div className={styles.demoMuted}>Управление mini app</div>
+          <div className={styles.demoMuted}>Управление мини-приложением</div>
         </div>
-        <span className={styles.demoAppBadge}>PRO</span>
+        <span className={styles.demoAppBadge}>ПЛАТНЫЙ</span>
       </div>
 
       <div key={tab} className={`${styles.demoScreen} ${motionClass}`}>
@@ -899,7 +910,7 @@ function DemoPhoneScreen({
         {tab === "logs" ? <DemoLogsTab /> : null}
       </div>
 
-      <div className={styles.demoTabbar} role="tablist" aria-label="Разделы mini app">
+      <div className={styles.demoTabbar} role="tablist" aria-label="Разделы мини-приложения">
         {DEMO_TABS.map((item) => (
           <button
             key={`phone-${item.id}`}
@@ -1097,17 +1108,17 @@ function DemoStorefrontTab() {
 
         <div className={styles.demoStorefrontLinks}>
           <div className={styles.demoStorefrontLinkRow}>
-            <span className={styles.demoMuted}>Черновик URL</span>
+            <span className={styles.demoMuted}>Черновой адрес</span>
             <span className={styles.demoUrl}>{DEMO_DATA.storefront.draftUrl}</span>
           </div>
           <div className={styles.demoStorefrontLinkRow}>
-            <span className={styles.demoMuted}>Публичный URL</span>
+            <span className={styles.demoMuted}>Публичный адрес</span>
             <span className={styles.demoUrl}>{DEMO_DATA.storefront.publicUrl}</span>
           </div>
         </div>
 
         <div className={styles.demoActionCard}>
-          <div className={styles.demoMuted}>Текущий оффер на публикации</div>
+          <div className={styles.demoMuted}>Текущий тариф на витрине</div>
           <div className={styles.demoOfferTitle}>{DEMO_DATA.storefront.offerTitle}</div>
           <div className={styles.demoMuted}>{DEMO_DATA.storefront.offerPrice}</div>
         </div>
@@ -1140,9 +1151,9 @@ function DemoProviderTab() {
         <div className={styles.demoPanelTitle}>Данные магазина</div>
         <div className={styles.demoMuted}>Касса подключена. Секреты скрыты.</div>
         <div className={styles.demoFilterRow}>
-          <span className={`${styles.demoChip} ${styles.demoChipActive}`}>Merchant: {DEMO_DATA.provider.merchantLogin}</span>
-          <span className={styles.demoChip}>Pass1 сохранён</span>
-          <span className={styles.demoChip}>Pass2 сохранён</span>
+          <span className={`${styles.demoChip} ${styles.demoChipActive}`}>Логин магазина: {DEMO_DATA.provider.merchantLogin}</span>
+          <span className={styles.demoChip}>Пароль 1 сохранен</span>
+          <span className={styles.demoChip}>Пароль 2 сохранен</span>
         </div>
       </div>
     </div>
@@ -1212,14 +1223,14 @@ function DemoChatRow({
       <div className="flex items-center justify-between gap-2">
         <span className="text-sm font-medium text-slate-800">{title}</span>
         <span className={`${styles.demoStatus} ${adminOk ? styles.demoStatusOk : styles.demoStatusWarn}`}>
-          бот админ {adminOk ? "ok" : "внимание"}
+          бот админ: {adminOk ? "да" : "нужно"}
         </span>
       </div>
       <div className="mt-1 text-xs text-slate-500">{rules}</div>
       <div className={styles.demoChatKpis}>
-        <span>{tariffs}</span>
-        <span>{subscribers} в доступе</span>
-        <span>{turnover}</span>
+        <span>Тарифы: {tariffs} активных</span>
+        <span>В доступе: {subscribers} подписчиков</span>
+        <span>Оборот: {turnover}</span>
       </div>
     </div>
   );

@@ -1,64 +1,113 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0F172A" />
-      <stop offset="1" stop-color="#1E3A8A" />
+      <stop stop-color="#0A1222" />
+      <stop offset="0.5" stop-color="#13284A" />
+      <stop offset="1" stop-color="#1A3561" />
     </linearGradient>
+
+    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1060 88) rotate(120) scale(320 280)">
+      <stop stop-color="#62B6FF" stop-opacity="0.38" />
+      <stop offset="1" stop-color="#62B6FF" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="glowB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(118 574) rotate(28) scale(340 250)">
+      <stop stop-color="#5ED4FF" stop-opacity="0.3" />
+      <stop offset="1" stop-color="#5ED4FF" stop-opacity="0" />
+    </radialGradient>
+
+    <linearGradient id="panel" x1="0" y1="0" x2="420" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity="0.19" />
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.1" />
+    </linearGradient>
+
     <linearGradient id="chip" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#60A5FA" />
-      <stop offset="1" stop-color="#2563EB" />
+      <stop stop-color="#74BEFF" />
+      <stop offset="1" stop-color="#2F83F6" />
+    </linearGradient>
+
+    <linearGradient id="turnover" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#43C4FF" />
+      <stop offset="1" stop-color="#2B74F2" />
     </linearGradient>
   </defs>
 
   <rect width="1200" height="630" fill="url(#bg)" />
-  <circle cx="1060" cy="120" r="210" fill="#60A5FA" fill-opacity="0.18" />
-  <circle cx="140" cy="580" r="240" fill="#38BDF8" fill-opacity="0.16" />
+  <circle cx="1060" cy="88" r="300" fill="url(#glowA)" />
+  <circle cx="118" cy="574" r="300" fill="url(#glowB)" />
 
-  <rect x="72" y="70" width="190" height="42" rx="21" fill="white" fill-opacity="0.15" />
-  <text x="167" y="96" text-anchor="middle" fill="#DBEAFE" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700">
+  <rect x="72" y="64" width="188" height="44" rx="22" fill="white" fill-opacity="0.16" />
+  <text x="166" y="92" text-anchor="middle" fill="#E5F0FF" font-size="21" font-family="Arial, Helvetica, sans-serif" font-weight="700">
     PayGate
   </text>
 
-  <text x="72" y="220" fill="white" font-size="64" font-family="Arial, Helvetica, sans-serif" font-weight="700">
-    Telegram monetization
+  <text x="72" y="198" fill="white" font-size="64" font-family="Arial, Helvetica, sans-serif" font-weight="700">
+    Платная подписка
   </text>
-  <text x="72" y="292" fill="#DBEAFE" font-size="52" font-family="Arial, Helvetica, sans-serif" font-weight="600">
-    with SaaS-grade control
-  </text>
-
-  <text x="72" y="360" fill="#BFDBFE" font-size="28" font-family="Arial, Helvetica, sans-serif">
-    Payment → Access → Grace/Exclude
-  </text>
-  <text x="72" y="400" fill="#BFDBFE" font-size="28" font-family="Arial, Helvetica, sans-serif">
-    Storefront + Offer + Refunds on paygt.ru
+  <text x="72" y="268" fill="#DCEAFE" font-size="58" font-family="Arial, Helvetica, sans-serif" font-weight="600">
+    в Telegram без хаоса
   </text>
 
-  <rect x="760" y="174" width="360" height="278" rx="28" fill="white" fill-opacity="0.12" stroke="white" stroke-opacity="0.28" />
-  <text x="790" y="220" fill="white" font-size="24" font-family="Arial, Helvetica, sans-serif" font-weight="700">
-    Control Center
+  <text x="72" y="334" fill="#C8DBFB" font-size="26" font-family="Arial, Helvetica, sans-serif" font-weight="500">
+    Платеж → Доступ → Льготный период
+  </text>
+  <text x="72" y="374" fill="#C8DBFB" font-size="26" font-family="Arial, Helvetica, sans-serif" font-weight="500">
+    Исключение по правилам + витрина на paygt.ru
   </text>
 
-  <rect x="790" y="242" width="300" height="54" rx="16" fill="white" fill-opacity="0.92" />
-  <text x="814" y="274" fill="#0F172A" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="600">
-    Active subscribers
+  <rect x="72" y="412" width="214" height="46" rx="14" fill="white" fill-opacity="0.18" stroke="white" stroke-opacity="0.2" />
+  <text x="178" y="441" text-anchor="middle" fill="#E8F1FF" font-size="21" font-family="Arial, Helvetica, sans-serif" font-weight="600">
+    Мини-приложение
   </text>
-  <text x="1062" y="274" text-anchor="end" fill="#0F172A" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700">
+
+  <rect x="302" y="412" width="168" height="46" rx="14" fill="white" fill-opacity="0.12" stroke="white" stroke-opacity="0.16" />
+  <text x="386" y="441" text-anchor="middle" fill="#D8E7FF" font-size="21" font-family="Arial, Helvetica, sans-serif" font-weight="600">
+    Robokassa
+  </text>
+
+  <rect x="486" y="412" width="180" height="46" rx="14" fill="white" fill-opacity="0.12" stroke="white" stroke-opacity="0.16" />
+  <text x="576" y="441" text-anchor="middle" fill="#D8E7FF" font-size="21" font-family="Arial, Helvetica, sans-serif" font-weight="600">
+    Без % комиссии
+  </text>
+
+  <rect x="740" y="108" width="392" height="414" rx="30" fill="url(#panel)" stroke="white" stroke-opacity="0.28" />
+
+  <text x="774" y="156" fill="white" font-size="29" font-family="Arial, Helvetica, sans-serif" font-weight="700">
+    Панель PayGate
+  </text>
+  <text x="774" y="184" fill="#C7D9F8" font-size="19" font-family="Arial, Helvetica, sans-serif" font-weight="500">
+    Сводка в реальном времени
+  </text>
+
+  <rect x="774" y="212" width="324" height="64" rx="16" fill="white" fill-opacity="0.94" />
+  <text x="802" y="252" fill="#0E1A2E" font-size="23" font-family="Arial, Helvetica, sans-serif" font-weight="600">
+    Активные
+  </text>
+  <text x="1070" y="252" text-anchor="end" fill="#0E1A2E" font-size="23" font-family="Arial, Helvetica, sans-serif" font-weight="700">
     1 284
   </text>
 
-  <rect x="790" y="308" width="300" height="54" rx="16" fill="white" fill-opacity="0.92" />
-  <text x="814" y="340" fill="#0F172A" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="600">
-    Grace
+  <rect x="774" y="286" width="324" height="64" rx="16" fill="white" fill-opacity="0.94" />
+  <text x="802" y="326" fill="#0E1A2E" font-size="23" font-family="Arial, Helvetica, sans-serif" font-weight="600">
+    Льготный период
   </text>
-  <text x="1062" y="340" text-anchor="end" fill="#0F172A" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700">
+  <text x="1070" y="326" text-anchor="end" fill="#0E1A2E" font-size="23" font-family="Arial, Helvetica, sans-serif" font-weight="700">
     96
   </text>
 
-  <rect x="790" y="374" width="300" height="54" rx="16" fill="url(#chip)" />
-  <text x="814" y="406" fill="white" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="600">
-    Pro plan
+  <rect x="774" y="360" width="324" height="64" rx="16" fill="white" fill-opacity="0.94" />
+  <text x="802" y="400" fill="#0E1A2E" font-size="23" font-family="Arial, Helvetica, sans-serif" font-weight="600">
+    Просроченные
   </text>
-  <text x="1062" y="406" text-anchor="end" fill="white" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700">
-    490 RUB
+  <text x="1070" y="400" text-anchor="end" fill="#0E1A2E" font-size="23" font-family="Arial, Helvetica, sans-serif" font-weight="700">
+    14
+  </text>
+
+  <rect x="774" y="440" width="324" height="64" rx="18" fill="url(#turnover)" />
+  <text x="802" y="480" fill="white" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="600">
+    Оборот за месяц
+  </text>
+  <text x="1070" y="480" text-anchor="end" fill="white" font-size="23" font-family="Arial, Helvetica, sans-serif" font-weight="700">
+    84 900 ₽
   </text>
 </svg>

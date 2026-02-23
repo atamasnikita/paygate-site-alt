@@ -23,7 +23,7 @@ const HERO_BADGES = [
   { label: "Платный", value: "490 ₽ / 30 дней" }
 ] as const;
 
-const MINIAPP_SECTIONS = ["Сводка", "Чаты", "Витрина", "Провайдер", "Журнал", "Поддержка"] as const;
+const MINIAPP_SECTIONS = ["Сводка", "Ресурсы", "Витрина", "Провайдер", "Журнал", "Поддержка"] as const;
 
 const FEATURES = [
   {
@@ -54,7 +54,7 @@ const FEATURES = [
 
 const DEMO_TABS: Array<{ id: DemoTab; label: string; subtitle: string }> = [
   { id: "status", label: "Сводка", subtitle: "Оборот и статусы" },
-  { id: "chats", label: "Чаты", subtitle: "Подписчики и тарифы" },
+  { id: "chats", label: "Ресурсы", subtitle: "Подписчики и тарифы" },
   { id: "storefront", label: "Витрина", subtitle: "Публикация и тариф" },
   { id: "provider", label: "Провайдер", subtitle: "Robokassa и уведомления" },
   { id: "logs", label: "Журнал", subtitle: "События и действия" }
@@ -196,7 +196,10 @@ const FAQ = [
     q: "Кто отвечает за контент и возвраты?",
     a: "Ответственность за контент и политику возвратов несет продавец, PayGate дает техническую инфраструктуру."
   },
-  { q: "Можно ли подключить несколько чатов на одного продавца?", a: "Да. Один владелец канала может управлять несколькими чатами и тарифами." },
+  {
+    q: "Можно ли подключить несколько ресурсов на одного продавца?",
+    a: "Да. Один владелец канала может управлять несколькими ресурсами и тарифами."
+  },
   {
     q: "Что будет при превышении лимита бесплатного тарифа?",
     a: "Сервис предупредит заранее. Новые оплаты можно временно ограничить до перехода на платный тариф, текущих подписчиков не отключаем из-за тарифа."
@@ -204,7 +207,7 @@ const FAQ = [
 ] as const;
 
 const JOURNEY_NODES = [
-  { id: "channel", title: "Создай закрытый канал", subtitle: "Закрытый чат или канал", actionLabel: "Создаем" },
+  { id: "channel", title: "Создай закрытый канал или группу", subtitle: "Закрытый канал или группа", actionLabel: "Создаем" },
   { id: "telegram", title: "Добавь бота админом", subtitle: "Telegram: права администратора", actionLabel: "Добавляем" },
   { id: "storefront", title: "Создай витрину в мини-приложении", subtitle: "PayGate: мини-приложение", actionLabel: "Создаем" },
   { id: "provider", title: "Подключи Robokassa", subtitle: "Платежный провайдер", actionLabel: "Подключаем" },
@@ -504,7 +507,7 @@ export function LandingV3Client() {
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-3">
-                <MiniKpi title="Чатов" value={DEMO_DATA.overview.chats} />
+                <MiniKpi title="Ресурсов" value={DEMO_DATA.overview.chats} />
                 <MiniKpi title="Оборот за месяц" value={DEMO_DATA.overview.monthTurnover} />
               </div>
 
@@ -531,7 +534,7 @@ export function LandingV3Client() {
         <SectionHead
           eyebrow="Как это работает"
           title="Несколько шагов до первых денег в Telegram"
-          text="Путь владельца канала: закрытый канал, бот, витрина, провайдер и ссылка на оплату. После первого платежа PayGate сам держит под контролем доступ и статусы."
+          text="Путь владельца канала: закрытый канал или группа, бот, витрина, провайдер и ссылка на оплату. После первого платежа PayGate сам держит под контролем доступ и статусы."
         />
 
         <Reveal>
@@ -617,7 +620,7 @@ export function LandingV3Client() {
         <SectionHead
           eyebrow="Демо мини-приложения"
           title="Удобное мини-приложение вместо кнопок в боте"
-          text="Статусы, оборот, чаты, витрина, провайдер — всё в одном месте."
+          text="Статусы, оборот, ресурсы, витрина, провайдер — всё в одном месте."
         />
 
         <div className={styles.demoModeToggle}>
@@ -708,7 +711,7 @@ export function LandingV3Client() {
               <ul className={styles.storefrontDemoBullets}>
                 <li>Готовые маршруты и подборки стран</li>
                 <li>Практичные чек-листы перед поездкой</li>
-                <li>Закрытый чат путешественников</li>
+                <li>Закрытый канал или группа путешественников</li>
               </ul>
 
               <button type="button" disabled className={styles.storefrontDemoCta}>
@@ -857,7 +860,8 @@ export function LandingV3Client() {
           <div className="max-w-3xl">
             <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">Запускай платный Telegram без лишней инфраструктуры</h2>
             <p className="mt-3 text-sm leading-6 text-white/90 sm:text-base">
-              Подключи бота, настрой чат и начни продажи. Дальше PayGate держит процесс под контролем: платежи, доступ, статусы и исключения.
+              Подключи бота, настрой закрытый канал или группу и начни продажи. Дальше PayGate держит процесс под контролем: платежи, доступ,
+              статусы и исключения.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a
@@ -1195,7 +1199,7 @@ function DemoStatusTab() {
 
       <div className={styles.demoCardLike}>
         <div className={styles.demoPanelTitle}>Статус подписок</div>
-        <div className={styles.demoMuted}>В моменте по всем чатам</div>
+        <div className={styles.demoMuted}>В моменте по всем ресурсам</div>
 
         <div className={styles.demoSubstatusBar} aria-hidden="true">
           <span className={`${styles.demoSubstatusSeg} ${styles.demoSubstatusSegActive}`} style={{ width: activeWidth }} />
@@ -1244,7 +1248,7 @@ function DemoChatsTab() {
       <div className={styles.demoCardLike}>
         <div className={styles.demoPanelHeadRow}>
           <div>
-            <div className={styles.demoPanelTitle}>Чаты</div>
+            <div className={styles.demoPanelTitle}>Ресурсы</div>
             <div className={styles.demoMuted}>{DEMO_DATA.chats.totalLabel}</div>
           </div>
           <span className={`${styles.demoStatus} ${styles.demoStatusWarn}`}>Внимание: {DEMO_DATA.chats.needsAttention}</span>

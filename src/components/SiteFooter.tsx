@@ -17,7 +17,7 @@ export function SiteFooter() {
           <div className="space-y-2">
             <div className="font-semibold">PayGate</div>
             <div className="text-sm text-slate-600 max-w-md">
-              SaaS‑сервис для монетизации закрытых Telegram‑чатов и каналов: подписчики платят через ваш платёжный
+              SaaS‑сервис для монетизации закрытых Telegram‑каналов и групп: подписчики платят через ваш платёжный
               провайдер, а PayGate управляет доступом.
             </div>
           </div>

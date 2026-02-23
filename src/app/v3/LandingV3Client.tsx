@@ -674,7 +674,7 @@ export function LandingV3Client() {
       <section id="storefront-demo" className="mx-auto max-w-6xl px-4 py-14 sm:py-16">
         <SectionHead
           eyebrow="Витрина + оферта"
-          title="Покажите подписчикам аккуратную витрину на вашем домене"
+          title="Покажите подписчикам готовую витрину на вашем домене"
           text="Без отдельного сайта: витрина, оферта и правила возврата уже готовы. Ссылку можно использовать для модерации в платежной системе."
         />
 
@@ -1407,7 +1407,7 @@ function DemoChatRow({
       <div className="flex items-center justify-between gap-2">
         <span className="text-sm font-medium text-slate-800">{title}</span>
         <span className={`${styles.demoStatus} ${adminOk ? styles.demoStatusOk : styles.demoStatusWarn}`}>
-          бот админ: {adminOk ? "да" : "нужно"}
+          {adminOk ? "бот админ" : "бот не админ"}
         </span>
       </div>
       <div className="mt-1 text-xs text-slate-500">{rules}</div>

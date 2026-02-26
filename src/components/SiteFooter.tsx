@@ -6,6 +6,7 @@ export function SiteFooter() {
     config.ownerName ? { label: "Исполнитель", value: config.ownerName } : null,
     config.ownerStatus ? { label: "Статус", value: config.ownerStatus } : null,
     config.ownerInn ? { label: "ИНН", value: config.ownerInn } : null,
+    { label: "Телефон", value: "+7(916)990-94-27" },
     config.supportEmail ? { label: "Email", value: config.supportEmail } : null,
     config.ownerAddressShort ? { label: "Адрес", value: config.ownerAddressShort } : null
   ].filter(Boolean) as { label: string; value: string }[];

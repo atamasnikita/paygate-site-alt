@@ -12,6 +12,7 @@ export default function ContactsPage() {
     config.ownerName ? { label: "Исполнитель", value: config.ownerName } : null,
     config.ownerStatus ? { label: "Статус", value: config.ownerStatus } : null,
     config.ownerInn ? { label: "ИНН", value: config.ownerInn } : null,
+    { label: "Телефон", value: "+7(916)990-94-27" },
     config.supportEmail ? { label: "Email", value: config.supportEmail } : null,
     config.ownerAddress ? { label: "Адрес для корреспонденции", value: config.ownerAddress } : null
   ].filter(Boolean) as { label: string; value: string }[];
@@ -20,7 +21,7 @@ export default function ContactsPage() {
     <div className="mx-auto max-w-5xl px-4 py-14 sm:py-16">
       <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">Контакты</h1>
       <p className="mt-3 text-slate-600 max-w-2xl">
-        Если нужна помощь с подключением Robokassa или настройкой доступа — напишите нам на e-mail.
+        Если нужна помощь с подключением Robokassa или настройкой доступа — напишите или позвоните нам.
       </p>
 
       <div className="mt-10 grid grid-cols-1 gap-4">

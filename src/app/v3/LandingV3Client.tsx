@@ -17,10 +17,13 @@ type StorefrontAccent = "ocean" | "emerald" | "amber" | "rose" | "slate" | "indi
 const EVENT_ENDPOINT = process.env.NEXT_PUBLIC_EVENTS_ENDPOINT?.trim() || "";
 
 const HERO_BADGES = [
-  { label: "Онбординг", value: "~10 минут" },
-  { label: "Авто-исключение", value: "льготный период + правила" },
-  { label: "Бесплатный", value: "до 5 000 ₽/мес" },
-  { label: "Платный", value: "490 ₽ / 30 дней" }
+  { label: "Запуск", value: "~10 минут" },
+  { label: "Авто-исключение", value: "льготный период + правила" }
+] as const;
+
+const HERO_TARIFFS = [
+  { label: "Free", value: "до 5 000 ₽/мес" },
+  { label: "Pro", value: "490 ₽ / 30 дней" }
 ] as const;
 
 const MINIAPP_SECTIONS = ["Сводка", "Ресурсы", "Витрина", "Провайдер", "Журнал", "Поддержка"] as const;
@@ -484,6 +487,21 @@ export function LandingV3Client() {
                     </div>
                   </Reveal>
                 ))}
+
+                <Reveal className="col-span-2">
+                  <div className={styles.tariffBadgeCard}>
+                    <div className={styles.tariffBadgeTitle}>Тарифы PayGate</div>
+                    <div className={styles.tariffBadgeRow}>
+                      {HERO_TARIFFS.map((tariff, index) => (
+                        <div key={tariff.label} className={styles.tariffBadgeItem}>
+                          <div className={styles.tariffBadgeLabel}>Тариф {tariff.label}</div>
+                          <div className={styles.tariffBadgeValue}>{tariff.value}</div>
+                          {index === 0 ? <span className={styles.tariffBadgeDivider} aria-hidden="true" /> : null}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </Reveal>
               </div>
             </div>
 
@@ -804,7 +822,7 @@ export function LandingV3Client() {
           <Reveal>
             <article className={styles.pricingCard}>
               <div className="flex items-center justify-between gap-4">
-                <div className="text-lg font-semibold text-slate-900">Бесплатный</div>
+                <div className="text-lg font-semibold text-slate-900">Тариф Free</div>
                 <div className="text-sm text-slate-600">до 5 000 ₽/мес</div>
               </div>
               <p className="mt-4 text-sm leading-6 text-slate-600">
@@ -816,7 +834,7 @@ export function LandingV3Client() {
           <Reveal delay={80}>
             <article className={styles.pricingCardPro}>
               <div className="flex items-center justify-between gap-4">
-                <div className="text-lg font-semibold text-slate-900">Платный</div>
+                <div className="text-lg font-semibold text-slate-900">Тариф Pro</div>
                 <div className="text-sm text-slate-700">490 ₽ / 30 дней</div>
               </div>
               <p className="mt-4 text-sm leading-6 text-slate-700">
@@ -845,7 +863,11 @@ export function LandingV3Client() {
       </section>
 
       <section id="faq" className="mx-auto max-w-6xl px-4 py-14 sm:py-16">
-        <SectionHead eyebrow="Вопросы" title="Закрываем ключевые вопросы перед запуском" />
+        <SectionHead
+          eyebrow="Вопросы"
+          title="Закрываем ключевые вопросы перед запуском"
+          text="Платежный провайдер — это сервис приема оплаты (например, Robokassa или YooKassa), который зачисляет деньги напрямую владельцу канала."
+        />
         <div className="mt-8">
           <FaqAccordion
             items={[...FAQ]}

@@ -115,20 +115,8 @@
 }
 
 .tariffBadgeRow {
-  position: relative;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.tariffBadgeRow::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 2px;
-  bottom: 2px;
-  width: 1px;
-  transform: translateX(-50%);
-  background: rgba(148, 163, 184, 0.45);
 }
 
 .tariffBadgeItem {

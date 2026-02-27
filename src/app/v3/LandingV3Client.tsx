@@ -494,7 +494,7 @@ export function LandingV3Client() {
                     <div className={styles.tariffBadgeRow}>
                       {HERO_TARIFFS.map((tariff) => (
                         <div key={tariff.label} className={styles.tariffBadgeItem}>
-                          <div className={styles.tariffBadgeLabel}>Тариф {tariff.label}</div>
+                          <div className={styles.tariffBadgeLabel}>{tariff.label}</div>
                           <div className={styles.tariffBadgeValue}>{tariff.value}</div>
                         </div>
                       ))}
@@ -821,7 +821,7 @@ export function LandingV3Client() {
           <Reveal>
             <article className={styles.pricingCard}>
               <div className="flex items-center justify-between gap-4">
-                <div className="text-lg font-semibold text-slate-900">Тариф Бесплатный</div>
+                <div className="text-lg font-semibold text-slate-900">Бесплатный</div>
                 <div className="text-sm text-slate-600">до 5 000 ₽/мес</div>
               </div>
               <p className="mt-4 text-sm leading-6 text-slate-600">
@@ -833,7 +833,7 @@ export function LandingV3Client() {
           <Reveal delay={80}>
             <article className={styles.pricingCardPro}>
               <div className="flex items-center justify-between gap-4">
-                <div className="text-lg font-semibold text-slate-900">Тариф Безлимитный</div>
+                <div className="text-lg font-semibold text-slate-900">Безлимитный</div>
                 <div className="text-sm text-slate-700">490 ₽ / 30 дней</div>
               </div>
               <p className="mt-4 text-sm leading-6 text-slate-700">

@@ -1535,15 +1535,18 @@
     min-height: 76px;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    gap: 4px;
+    padding: 12px;
   }
 
   .badgeCard > :first-child {
-    min-height: 28px;
-    line-height: 1.25;
+    line-height: 1.2;
   }
 
   .badgeCard > :last-child {
-    margin-top: auto;
+    margin-top: 0;
+    line-height: 1.35;
   }
 
   .demoLayout {

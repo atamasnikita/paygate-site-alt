@@ -4,16 +4,15 @@ import { LandingV3Client } from "./v3/LandingV3Client";
 
 const title = "PayGate — сервис для организации платной подписки в Telegram";
 const description =
-  "Монетизация Telegram без отдельного сайта: витрина, оферта и возвраты на paygt.ru. Деньги идут напрямую в платежный провайдер владельца канала (Robokassa / YooKassa).";
+  "PayGate автоматизирует платный доступ в Telegram: оплата, выдача доступа, статусы подписок и исключения по правилам. Управление — в удобном мини-приложении, а платежи поступают напрямую в подключенный провайдер.";
 const pageUrl = `${config.siteUrl}/`;
 const ogImage = `${config.siteUrl}/og-v3.png`;
-const landingSections = [
-  { name: "Как это работает", path: "#how-it-works" },
-  { name: "Mini App", path: "#miniapp-demo" },
-  { name: "Витрина", path: "#storefront-demo" },
-  { name: "Возможности", path: "#features" },
-  { name: "Тарифы", path: "#pricing" },
-  { name: "Вопросы", path: "#faq" }
+const landingPages = [
+  { name: "Главная", path: "/" },
+  { name: "Контакты", path: "/contacts/" },
+  { name: "Оферта", path: "/oferta/" },
+  { name: "Политика конфиденциальности", path: "/privacy/" },
+  { name: "Правила возвратов", path: "/refunds/" }
 ] as const;
 
 const landingStructuredData = {
@@ -29,8 +28,8 @@ const landingStructuredData = {
     },
     {
       "@type": "SiteNavigationElement",
-      name: landingSections.map((section) => section.name),
-      url: landingSections.map((section) => `${config.siteUrl}/${section.path}`)
+      name: landingPages.map((page) => page.name),
+      url: landingPages.map((page) => `${config.siteUrl}${page.path}`)
     }
   ]
 };
@@ -42,9 +41,9 @@ export const metadata: Metadata = {
     "монетизация Telegram канала",
     "платный доступ в Telegram",
     "пейвол для Telegram",
-    "PayGate",
-    "Robokassa",
-    "YooKassa"
+    "бот для платной подписки Telegram",
+    "мини-приложение Telegram для владельца канала",
+    "PayGate"
   ],
   robots: { index: true, follow: true },
   openGraph: {

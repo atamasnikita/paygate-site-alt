@@ -4,7 +4,7 @@ import { LandingV3Client } from "./LandingV3Client";
 
 const title = "PayGate v3 — монетизация Telegram, которая выглядит как зрелый SaaS";
 const description =
-  "Платный доступ в Telegram без отдельного сайта: витрина, оферта и возвраты на paygt.ru. Деньги идут напрямую в платежный провайдер владельца канала (Robokassa / YooKassa).";
+  "PayGate автоматизирует платный доступ в Telegram: оплата, выдача доступа, статусы подписок и исключения по правилам. Управление — в удобном мини-приложении.";
 const pageUrl = `${config.siteUrl}/v3`;
 const ogImage = `${config.siteUrl}/og-v3.png`;
 
@@ -15,9 +15,9 @@ export const metadata: Metadata = {
     "монетизация Telegram канала",
     "платный доступ в Telegram",
     "пейвол для Telegram",
-    "PayGate",
-    "Robokassa",
-    "YooKassa"
+    "бот для платной подписки Telegram",
+    "мини-приложение Telegram для владельца канала",
+    "PayGate"
   ],
   robots: { index: false, follow: false },
   openGraph: {

@@ -22,8 +22,8 @@ const HERO_BADGES = [
 ] as const;
 
 const HERO_TARIFFS = [
-  { label: "Free", value: "до 5 000 ₽/мес" },
-  { label: "Pro", value: "490 ₽ / 30 дней" }
+  { label: "Бесплатный", value: "до 5 000 ₽/мес" },
+  { label: "Безлимитный", value: "490 ₽ / 30 дней" }
 ] as const;
 
 const MINIAPP_SECTIONS = ["Сводка", "Ресурсы", "Витрина", "Провайдер", "Журнал", "Поддержка"] as const;
@@ -492,11 +492,10 @@ export function LandingV3Client() {
                   <div className={styles.tariffBadgeCard}>
                     <div className={styles.tariffBadgeTitle}>Тарифы PayGate</div>
                     <div className={styles.tariffBadgeRow}>
-                      {HERO_TARIFFS.map((tariff, index) => (
+                      {HERO_TARIFFS.map((tariff) => (
                         <div key={tariff.label} className={styles.tariffBadgeItem}>
                           <div className={styles.tariffBadgeLabel}>Тариф {tariff.label}</div>
                           <div className={styles.tariffBadgeValue}>{tariff.value}</div>
-                          {index === 0 ? <span className={styles.tariffBadgeDivider} aria-hidden="true" /> : null}
                         </div>
                       ))}
                     </div>
@@ -822,7 +821,7 @@ export function LandingV3Client() {
           <Reveal>
             <article className={styles.pricingCard}>
               <div className="flex items-center justify-between gap-4">
-                <div className="text-lg font-semibold text-slate-900">Тариф Free</div>
+                <div className="text-lg font-semibold text-slate-900">Тариф Бесплатный</div>
                 <div className="text-sm text-slate-600">до 5 000 ₽/мес</div>
               </div>
               <p className="mt-4 text-sm leading-6 text-slate-600">
@@ -834,7 +833,7 @@ export function LandingV3Client() {
           <Reveal delay={80}>
             <article className={styles.pricingCardPro}>
               <div className="flex items-center justify-between gap-4">
-                <div className="text-lg font-semibold text-slate-900">Тариф Pro</div>
+                <div className="text-lg font-semibold text-slate-900">Тариф Безлимитный</div>
                 <div className="text-sm text-slate-700">490 ₽ / 30 дней</div>
               </div>
               <p className="mt-4 text-sm leading-6 text-slate-700">

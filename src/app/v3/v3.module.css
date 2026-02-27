@@ -90,7 +90,9 @@
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.9);
   padding: 10px 12px;
-  height: 100%;
+  display: grid;
+  gap: 2px;
+  align-content: start;
 }
 
 .controlCard {
@@ -1532,21 +1534,17 @@
 
 @media (min-width: 768px) {
   .badgeCard {
-    min-height: 76px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 4px;
+    min-height: 0;
     padding: 12px;
   }
 
   .badgeCard > :first-child {
-    line-height: 1.2;
+    line-height: 1.24;
   }
 
   .badgeCard > :last-child {
     margin-top: 0;
-    line-height: 1.35;
+    line-height: 1.28;
   }
 
   .demoLayout {

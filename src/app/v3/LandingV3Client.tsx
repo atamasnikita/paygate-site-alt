@@ -475,9 +475,9 @@ export function LandingV3Client() {
                 </a>
               </div>
 
-              <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              <div className="mt-7 grid grid-cols-2 items-start gap-3 sm:grid-cols-4">
                 {HERO_BADGES.map((item) => (
-                  <Reveal key={item.label} className="h-full">
+                  <Reveal key={item.label}>
                     <div className={styles.badgeCard}>
                       <div className="text-[11px] uppercase tracking-wide text-slate-500">{item.label}</div>
                       <div className="mt-1 text-sm font-semibold text-slate-900">{item.value}</div>
@@ -607,7 +607,7 @@ export function LandingV3Client() {
         </p>
 
         <div className={styles.journeyAfterLine}>
-          <span>После подключения всё управление — в мини-приложении.</span>
+          <span>Весь запуск и управление — в мини-приложении.</span>
           <a
             href="#miniapp-demo"
             className={styles.journeyAfterCta}

@@ -21,7 +21,7 @@ export default function ContactsPage() {
     <div className="mx-auto max-w-5xl px-4 py-14 sm:py-16">
       <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">Контакты</h1>
       <p className="mt-3 text-slate-600 max-w-2xl">
-        Если нужна помощь с подключением Robokassa или настройкой доступа — напишите или позвоните нам.
+        Если нужна помощь с подключением платежного провайдера (Robokassa / YooKassa) или настройкой доступа — напишите или позвоните нам.
       </p>
 
       <div className="mt-10 grid grid-cols-1 gap-4">

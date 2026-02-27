@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: "%s — PayGate"
   },
   description:
-    "PayGate помогает монетизировать закрытые Telegram‑каналы и чаты: подписчики платят через вашу Robokassa, а PayGate управляет доступом.",
+    "PayGate помогает монетизировать закрытые Telegram‑каналы и чаты: подписчики платят через ваш платежный провайдер (Robokassa / YooKassa), а PayGate управляет доступом.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -32,14 +32,14 @@ export const metadata: Metadata = {
     url: config.siteUrl,
     title: "PayGate — монетизация закрытых Telegram‑каналов",
     description:
-      "Оплата подписчиков идёт напрямую в вашу Robokassa. PayGate выдаёт доступ и исключает пользователей с просроченной подпиской.",
+      "Оплата подписчиков идёт напрямую в ваш платежный провайдер (Robokassa / YooKassa). PayGate выдаёт доступ и исключает пользователей с просроченной подпиской.",
     siteName: "PayGate"
   },
   twitter: {
     card: "summary_large_image",
     title: "PayGate — монетизация закрытых Telegram‑каналов",
     description:
-      "Оплата подписчиков идёт напрямую в вашу Robokassa. PayGate выдаёт доступ и исключает пользователей с просроченной подпиской."
+      "Оплата подписчиков идёт напрямую в ваш платежный провайдер (Robokassa / YooKassa). PayGate выдаёт доступ и исключает пользователей с просроченной подпиской."
   }
 };
 

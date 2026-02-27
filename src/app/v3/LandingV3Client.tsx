@@ -32,7 +32,7 @@ const FEATURES = [
   },
   {
     title: "Без комиссии за каждую транзакцию",
-    text: "PayGate не удерживает процент с каждого платежа. Вы работаете по понятному тарифу, а деньги идут напрямую через вашу Robokassa."
+    text: "PayGate не удерживает процент с каждого платежа. Вы работаете по понятному тарифу, а деньги идут напрямую через ваш платежный провайдер."
   },
   {
     title: "Оферта + PDF одним кликом",
@@ -44,7 +44,7 @@ const FEATURES = [
   },
   {
     title: "Пошаговый запуск в mini app",
-    text: "Чеклист из 4 шагов: ресурс, тариф, ссылка для модерации, Robokassa. Сразу видно, что готово и что мешает запуску."
+    text: "Чеклист из 4 шагов: ресурс, тариф, ссылка для модерации, платежный провайдер. Сразу видно, что готово и что мешает запуску."
   },
   {
     title: "Оплатил, но доступ не выдан",
@@ -56,7 +56,7 @@ const DEMO_TABS: Array<{ id: DemoTab; label: string; subtitle: string }> = [
   { id: "status", label: "Сводка", subtitle: "Оборот и статусы" },
   { id: "chats", label: "Ресурсы", subtitle: "Подписчики и тарифы" },
   { id: "storefront", label: "Витрина", subtitle: "Публикация и тариф" },
-  { id: "provider", label: "Провайдер", subtitle: "Robokassa и уведомления" },
+  { id: "provider", label: "Провайдер", subtitle: "Robokassa / YooKassa" },
   { id: "logs", label: "Журнал", subtitle: "События и действия" }
 ] as const;
 
@@ -171,7 +171,7 @@ const DEMO_DATA = {
     status: "подключена",
     summary: "Статус: подключено • режим: тестовый",
     webhookLabel: "Ссылка для уведомлений",
-    webhookValue: "api.paygt.ru/webhooks/robokassa/subscriber",
+    webhookValue: "api.paygt.ru/webhooks/{provider}/subscriber",
     merchantLogin: "travel_club"
   },
   logs: {
@@ -187,7 +187,10 @@ const DEMO_DATA = {
 
 const FAQ = [
   { q: "Нужен ли сайт для запуска?", a: "Нет. Витрина, оферта и возвраты публикуются на paygt.ru, этого достаточно для старта." },
-  { q: "Куда идут деньги подписчиков?", a: "Деньги идут напрямую в Robokassa владельца канала. PayGate не принимает платежи на свою сторону." },
+  {
+    q: "Куда идут деньги подписчиков?",
+    a: "Деньги идут напрямую в подключенный платежный провайдер владельца канала (Robokassa или YooKassa). PayGate не принимает платежи на свою сторону."
+  },
   {
     q: "Что если оплатили, но доступ не выдан?",
     a: "Видны статусы и причина ошибки. Можно быстро повторить выдачу доступа через рабочие инструменты."
@@ -210,7 +213,7 @@ const JOURNEY_NODES = [
   { id: "channel", title: "Создай закрытый канал или группу", subtitle: "Закрытый канал или группа", actionLabel: "Создаем" },
   { id: "telegram", title: "Добавь бота админом", subtitle: "Telegram: права администратора", actionLabel: "Добавляем" },
   { id: "storefront", title: "Создай витрину в мини-приложении", subtitle: "PayGate: мини-приложение", actionLabel: "Создаем" },
-  { id: "provider", title: "Подключи Robokassa", subtitle: "Платежный провайдер", actionLabel: "Подключаем" },
+  { id: "provider", title: "Подключи платежный провайдер", subtitle: "Robokassa или YooKassa", actionLabel: "Подключаем" },
   { id: "link", title: "Опубликуй ссылку на оплату", subtitle: "Публичная ссылка на оплату", actionLabel: "Публикуем" },
   { id: "result", title: "Первая оплата и доступ", subtitle: "Оплата -> доступ выдан", actionLabel: "Получаем" }
 ] as const;
@@ -450,7 +453,7 @@ export function LandingV3Client() {
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-7 text-slate-700 sm:text-lg">
                 Монетизация контента в Telegram без сайта и лишней рутины. Подписчик платит, бот выдает доступ и следит за исключениями. Витрина
-                продавца, оферта и возвраты публикуются на paygt.ru. Деньги поступают напрямую к вам через Robokassa.
+                продавца, оферта и возвраты публикуются на paygt.ru. Деньги поступают напрямую к вам через платежный провайдер.
               </p>
 
               <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -527,7 +530,7 @@ export function LandingV3Client() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4">
-        <div className={styles.trustLine}>Готово для Robokassa • Встроено в Telegram • Без данных карт</div>
+        <div className={styles.trustLine}>Robokassa / YooKassa • Встроено в Telegram • Без данных карт</div>
       </section>
 
       <section id="how-it-works" ref={journeyRef} className="mx-auto max-w-6xl px-4 py-14 sm:py-16">
@@ -595,7 +598,7 @@ export function LandingV3Client() {
 
         <Reveal delay={80}>
           <div className={styles.journeyStorefrontHint}>
-            Витрину, которую вы создаете в мини-приложении, можно использовать в Robokassa как публичную ссылку продавца с офертой и правилами возврата.
+            Витрину, которую вы создаете в мини-приложении, можно использовать в платежном провайдере как публичную ссылку продавца с офертой и правилами возврата.
           </div>
         </Reveal>
 
@@ -1281,14 +1284,14 @@ function DemoChatsTab() {
 function DemoStorefrontTab() {
   return (
     <div className={styles.demoPanel}>
-      <div className={styles.demoCardLike}>
-        <div className={styles.demoPanelHeadRow}>
-          <div>
-            <div className={styles.demoPanelTitle}>Витрина владельца канала</div>
-            <div className={styles.demoMuted}>Публичная страница для Robokassa</div>
+        <div className={styles.demoCardLike}>
+          <div className={styles.demoPanelHeadRow}>
+            <div>
+              <div className={styles.demoPanelTitle}>Витрина владельца канала</div>
+              <div className={styles.demoMuted}>Публичная страница для модерации платежного провайдера</div>
+            </div>
+            <span className={`${styles.demoStatus} ${styles.demoStatusOk}`}>{DEMO_DATA.storefront.status}</span>
           </div>
-          <span className={`${styles.demoStatus} ${styles.demoStatusOk}`}>{DEMO_DATA.storefront.status}</span>
-        </div>
 
         <div className={styles.demoStorefrontLinks}>
           <div className={styles.demoStorefrontLinkRow}>
@@ -1314,13 +1317,13 @@ function DemoStorefrontTab() {
 function DemoProviderTab() {
   return (
     <div className={styles.demoPanel}>
-      <div className={styles.demoCardLike}>
-        <div className={styles.demoPanelHeadRow}>
-          <div>
-            <div className={styles.demoPanelTitle}>Robokassa</div>
-            <div className={styles.demoMuted}>{DEMO_DATA.provider.summary}</div>
-          </div>
-          <span className={`${styles.demoStatus} ${styles.demoStatusOk}`}>{DEMO_DATA.provider.status}</span>
+        <div className={styles.demoCardLike}>
+          <div className={styles.demoPanelHeadRow}>
+            <div>
+              <div className={styles.demoPanelTitle}>Платежный провайдер (Robokassa / YooKassa)</div>
+              <div className={styles.demoMuted}>{DEMO_DATA.provider.summary}</div>
+            </div>
+            <span className={`${styles.demoStatus} ${styles.demoStatusOk}`}>{DEMO_DATA.provider.status}</span>
         </div>
 
         <DemoListRow
@@ -1331,13 +1334,13 @@ function DemoProviderTab() {
         />
       </div>
 
-      <div className={styles.demoCardLike}>
-        <div className={styles.demoPanelTitle}>Данные магазина</div>
-        <div className={styles.demoMuted}>Касса подключена. Секреты скрыты.</div>
+        <div className={styles.demoCardLike}>
+        <div className={styles.demoPanelTitle}>Данные провайдера</div>
+        <div className={styles.demoMuted}>Провайдер подключен. Секреты скрыты.</div>
         <div className={styles.demoFilterRow}>
-          <span className={`${styles.demoChip} ${styles.demoChipActive}`}>Логин магазина: {DEMO_DATA.provider.merchantLogin}</span>
-          <span className={styles.demoChip}>Пароль 1 сохранен</span>
-          <span className={styles.demoChip}>Пароль 2 сохранен</span>
+          <span className={`${styles.demoChip} ${styles.demoChipActive}`}>Идентификатор магазина: {DEMO_DATA.provider.merchantLogin}</span>
+          <span className={styles.demoChip}>Секретный ключ сохранен</span>
+          <span className={styles.demoChip}>Webhook настроен</span>
         </div>
       </div>
     </div>

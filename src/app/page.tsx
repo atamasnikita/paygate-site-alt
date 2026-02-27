@@ -4,7 +4,7 @@ import { LandingV3Client } from "./v3/LandingV3Client";
 
 const title = "PayGate — сервис для организации платной подписки в Telegram";
 const description =
-  "Монетизация Telegram без отдельного сайта: витрина, оферта и возвраты на paygt.ru. Деньги идут напрямую в Robokassa владельца канала.";
+  "Монетизация Telegram без отдельного сайта: витрина, оферта и возвраты на paygt.ru. Деньги идут напрямую в платежный провайдер владельца канала (Robokassa / YooKassa).";
 const pageUrl = `${config.siteUrl}/`;
 const ogImage = `${config.siteUrl}/og-v3.png`;
 const landingSections = [
@@ -38,7 +38,14 @@ const landingStructuredData = {
 export const metadata: Metadata = {
   title,
   description,
-  keywords: ["монетизация Telegram канала", "платный доступ в Telegram", "пейвол для Telegram", "PayGate", "Robokassa"],
+  keywords: [
+    "монетизация Telegram канала",
+    "платный доступ в Telegram",
+    "пейвол для Telegram",
+    "PayGate",
+    "Robokassa",
+    "YooKassa"
+  ],
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",

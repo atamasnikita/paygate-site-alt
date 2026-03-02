@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://paygt.ru/sitemap.xml
+Sitemap: https://mydopusk.ru/sitemap.xml

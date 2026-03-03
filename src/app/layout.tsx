@@ -5,7 +5,7 @@ import { config } from "@/config";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 
-const YANDEX_METRIKA_ID = 106914675;
+const YANDEX_METRIKA_ID = 107087152;
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.siteUrl),

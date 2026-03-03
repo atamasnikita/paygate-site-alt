@@ -8,7 +8,7 @@ export function SiteHeader() {
   const isV3 = pathname === "/" || pathname?.startsWith("/v3");
   const landingLinks = [
     { href: "#how-it-works", label: "Как это работает" },
-    { href: "#miniapp-demo", label: "Mini App" },
+    { href: "#miniapp-demo", label: "Мини-приложение" },
     { href: "#storefront-demo", label: "Витрина" },
     { href: "#features", label: "Возможности" },
     { href: "#pricing", label: "Тарифы" },

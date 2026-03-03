@@ -5,7 +5,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Политика возвратов",
-  description: "Политика возвратов «Допуска» по Подписке Pro."
+  description: "Политика возвратов «Допуска» по подписке «Безлимитный»."
 };
 
 export default function RefundsPage() {

@@ -137,7 +137,7 @@ export default function LandingV2Page() {
               <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
                 <MetricItem label="Онбординг" value="~3 минуты" />
                 <MetricItem label="Модель" value="Bot + Mini App" />
-                <MetricItem label="Тариф Pro" value="490 ₽ / 30 дн." />
+                <MetricItem label="Тариф «Безлимитный»" value="490 ₽ / 30 дн." />
               </div>
             </div>
 

@@ -16,10 +16,10 @@ export function SiteFooter() {
       <div className="mx-auto max-w-5xl px-4 py-10">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div className="space-y-2">
-            <div className="font-semibold">PayGate</div>
+            <div className="font-semibold">Допуск</div>
             <div className="text-sm text-slate-600 max-w-md">
               SaaS‑сервис для монетизации закрытых Telegram‑каналов и групп: подписчики платят через ваш платёжный
-              провайдер, а PayGate управляет доступом.
+              провайдер, а Допуск управляет доступом.
             </div>
           </div>
 
@@ -54,7 +54,7 @@ export function SiteFooter() {
           <Link href="/contacts" className="hover:text-slate-900">
             Контакты
           </Link>
-          <span className="ml-auto text-xs text-slate-500">© {new Date().getFullYear()} PayGate</span>
+          <span className="ml-auto text-xs text-slate-500">© {new Date().getFullYear()} Допуск</span>
         </div>
       </div>
     </footer>

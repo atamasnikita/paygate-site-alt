@@ -35,7 +35,7 @@ const FEATURES = [
   },
   {
     title: "Без комиссии за каждую транзакцию",
-    text: "PayGate не удерживает процент с каждого платежа. Вы работаете по понятному тарифу, а деньги идут напрямую через ваш платежный провайдер."
+    text: "Допуск не удерживает процент с каждого платежа. Вы работаете по понятному тарифу, а деньги идут напрямую через ваш платежный провайдер."
   },
   {
     title: "Оферта + PDF одним кликом",
@@ -165,8 +165,8 @@ const DEMO_DATA = {
   },
   storefront: {
     status: "опубликована",
-    draftUrl: "m.paygt.ru/travel-club?draft=1",
-    publicUrl: "m.paygt.ru/travel-club",
+    draftUrl: "m.mydopusk.ru/travel-club?draft=1",
+    publicUrl: "m.mydopusk.ru/travel-club",
     offerTitle: "Премиум 30 дней",
     offerPrice: "499 ₽ / 30 дн."
   },
@@ -174,7 +174,7 @@ const DEMO_DATA = {
     status: "подключена",
     summary: "Статус: подключено • режим: тестовый",
     webhookLabel: "Ссылка для уведомлений",
-    webhookValue: "api.paygt.ru/webhooks/{provider}/subscriber",
+    webhookValue: "api.mydopusk.ru/webhooks/{provider}/subscriber",
     merchantLogin: "travel_club"
   },
   logs: {
@@ -189,10 +189,10 @@ const DEMO_DATA = {
 } as const;
 
 const FAQ = [
-  { q: "Нужен ли сайт для запуска?", a: "Нет. Витрина, оферта и возвраты публикуются на paygt.ru, этого достаточно для старта." },
+  { q: "Нужен ли сайт для запуска?", a: "Нет. Витрина, оферта и возвраты публикуются на mydopusk.ru, этого достаточно для старта." },
   {
     q: "Куда идут деньги подписчиков?",
-    a: "Деньги идут напрямую в подключенный платежный провайдер владельца канала (Robokassa или YooKassa). PayGate не принимает платежи на свою сторону."
+    a: "Деньги идут напрямую в подключенный платежный провайдер владельца канала (Robokassa или YooKassa). Допуск не принимает платежи на свою сторону."
   },
   {
     q: "Что если оплатили, но доступ не выдан?",
@@ -200,7 +200,7 @@ const FAQ = [
   },
   {
     q: "Кто отвечает за контент и возвраты?",
-    a: "Ответственность за контент и политику возвратов несет продавец, PayGate дает техническую инфраструктуру."
+    a: "Ответственность за контент и политику возвратов несет продавец, Допуск дает техническую инфраструктуру."
   },
   {
     q: "Можно ли подключить несколько ресурсов на одного продавца?",
@@ -215,7 +215,7 @@ const FAQ = [
 const JOURNEY_NODES = [
   { id: "channel", title: "Создай закрытый канал или группу", subtitle: "Закрытый канал или группа", actionLabel: "Создаем" },
   { id: "telegram", title: "Добавь бота админом", subtitle: "Telegram: права администратора", actionLabel: "Добавляем" },
-  { id: "storefront", title: "Создай витрину в мини-приложении", subtitle: "PayGate: мини-приложение", actionLabel: "Создаем" },
+  { id: "storefront", title: "Создай витрину в мини-приложении", subtitle: "Допуск: мини-приложение", actionLabel: "Создаем" },
   { id: "provider", title: "Подключи платежный провайдер", subtitle: "Robokassa или YooKassa", actionLabel: "Подключаем" },
   { id: "link", title: "Опубликуй ссылку на оплату", subtitle: "Публичная ссылка на оплату", actionLabel: "Публикуем" },
   { id: "result", title: "Первая оплата и доступ", subtitle: "Оплата -> доступ выдан", actionLabel: "Получаем" }
@@ -456,7 +456,7 @@ export function LandingV3Client() {
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-7 text-slate-700 sm:text-lg">
                 Монетизация контента в Telegram без сайта и лишней рутины. Подписчик платит, бот выдает доступ и следит за исключениями. Витрина
-                продавца, оферта и возвраты публикуются на paygt.ru. Деньги поступают напрямую к вам через платежный провайдер.
+                продавца, оферта и возвраты публикуются на mydopusk.ru. Деньги поступают напрямую к вам через платежный провайдер.
               </p>
 
               <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -490,7 +490,7 @@ export function LandingV3Client() {
 
                 <Reveal className="col-span-2">
                   <div className={styles.tariffBadgeCard}>
-                    <div className={styles.tariffBadgeTitle}>Тарифы PayGate</div>
+                    <div className={styles.tariffBadgeTitle}>Тарифы «Допуска»</div>
                     <div className={styles.tariffBadgeRow}>
                       {HERO_TARIFFS.map((tariff) => (
                         <div key={tariff.label} className={styles.tariffBadgeItem}>
@@ -507,7 +507,7 @@ export function LandingV3Client() {
             <Reveal className={styles.controlCard}>
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <div className="text-sm font-semibold text-slate-900">Панель PayGate</div>
+                  <div className="text-sm font-semibold text-slate-900">Панель «Допуск»</div>
                   <div className="text-xs text-slate-500">Сводка в реальном времени</div>
                 </div>
                 <span className={styles.liveBadge}>СЕЙЧАС</span>
@@ -648,14 +648,14 @@ export function LandingV3Client() {
             className={`${styles.demoModeBtn} ${demoMode === "before" ? styles.demoModeBtnActive : ""}`}
             onClick={() => handleDemoMode("before")}
           >
-            До PayGate
+            До Допуска
           </button>
           <button
             type="button"
             className={`${styles.demoModeBtn} ${demoMode === "after" ? styles.demoModeBtnActive : ""}`}
             onClick={() => handleDemoMode("after")}
           >
-            После PayGate
+            После Допуска
           </button>
         </div>
 
@@ -883,7 +883,7 @@ export function LandingV3Client() {
           <div className="max-w-3xl">
             <h2 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">Запускай платный Telegram без лишней инфраструктуры</h2>
             <p className="mt-3 text-sm leading-6 text-white/90 sm:text-base">
-              Подключи бота, настрой закрытый канал или группу и начни продажи. Дальше PayGate держит процесс под контролем: платежи, доступ,
+              Подключи бота, настрой закрытый канал или группу и начни продажи. Дальше Допуск держит процесс под контролем: платежи, доступ,
               статусы и исключения.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -1068,7 +1068,7 @@ function JourneyMobileCard({
 function BeforePaygateCard() {
   return (
     <div className={styles.beforeCard}>
-      <div className="text-sm font-semibold text-slate-900">До PayGate</div>
+      <div className="text-sm font-semibold text-slate-900">До Допуска</div>
       <p className="mt-2 text-sm leading-6 text-slate-600">
         Управление через кнопки в боте и ручные списки: сложно увидеть, кто оплатил, кто в льготном периоде и кому уже нужно закрыть доступ.
       </p>
@@ -1097,7 +1097,7 @@ function DemoPhoneScreen({
     <div className={styles.demoApp}>
       <div className={styles.demoAppHeader}>
         <div>
-          <div className={styles.demoAppTitle}>PayGate</div>
+          <div className={styles.demoAppTitle}>Допуск</div>
           <div className={styles.demoMuted}>Управление мини-приложением</div>
         </div>
         <span className={styles.demoAppBadge}>ПЛАТНЫЙ</span>

@@ -4,7 +4,7 @@ import { config } from "@/config";
 
 export const metadata: Metadata = {
   title: "Контакты",
-  description: "Контакты PayGate, реквизиты и ссылки на юридические документы."
+  description: "Контакты «Допуска», реквизиты и ссылки на юридические документы."
 };
 
 export default function ContactsPage() {

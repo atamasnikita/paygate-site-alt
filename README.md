@@ -1,6 +1,6 @@
-# PayGate — Landing
+# Допуск — Landing
 
-Публичный сайт проекта PayGate (лендинг + страницы оферты/ПДн/возвратов).
+Публичный сайт проекта Допуск (лендинг + страницы оферты/ПДн/возвратов).
 
 ## Локальный запуск
 
@@ -21,8 +21,8 @@ npm run dev
 
 Все переменные публичные, без секретов:
 
-- `NEXT_PUBLIC_SITE_URL` (например `https://paygt.ru`)
-- `NEXT_PUBLIC_BOT_URL` (например `https://t.me/PayGateAccessBot`)
+- `NEXT_PUBLIC_SITE_URL` (например `https://mydopusk.ru`)
+- `NEXT_PUBLIC_BOT_URL` (например `https://t.me/your_bot_username`)
 - `NEXT_PUBLIC_PANEL_URL` (опционально, ссылка на панель мерчанта)
 - `NEXT_PUBLIC_SUPPORT_EMAIL`
 - `NEXT_PUBLIC_SUPPORT_TG` (ссылка вида `https://t.me/...`)

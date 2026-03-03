@@ -11,7 +11,7 @@ const PILLARS = [
   },
   {
     title: "Оплата напрямую владельцу канала",
-    text: "Платежный провайдер (Robokassa / YooKassa) подключается на стороне владельца канала. PayGate не хранит данные карт и не становится промежуточной кассой."
+    text: "Платежный провайдер (Robokassa / YooKassa) подключается на стороне владельца канала. Допуск не хранит данные карт и не становится промежуточной кассой."
   },
   {
     title: "Управление доступом по правилам",
@@ -71,7 +71,7 @@ const COMPARE_ROWS = [
 
 const FAQ = [
   {
-    q: "Чем PayGate отличается от сервисов «только бот-кнопки»?",
+    q: "Чем «Допуск» отличается от сервисов «только бот-кнопки»?",
     a: "Мы оставляем Telegram простым для подписчика, а владельцу канала даем полноценный интерфейс управления подписочной моделью в mini app."
   },
   {
@@ -83,14 +83,14 @@ const FAQ = [
     a: "Доступ не теряется. Подписчик может вернуться в бота и снова получить путь на вступление."
   },
   {
-    q: "Какая роль PayGate в оплате?",
-    a: "PayGate технически оркестрирует сценарий оплаты и доступа. Деньги идут напрямую в кассу владельца канала."
+    q: "Какая роль «Допуска» в оплате?",
+    a: "«Допуск» технически оркестрирует сценарий оплаты и доступа. Деньги идут напрямую в кассу владельца канала."
   }
 ] as const;
 
 export const metadata: Metadata = {
   title: "Landing v2 Preview",
-  description: "Черновик новой версии лендинга PayGate",
+  description: "Черновик новой версии лендинга «Допуск»",
   robots: { index: false, follow: false }
 };
 
@@ -113,7 +113,7 @@ export default function LandingV2Page() {
               </h1>
 
               <p className="mt-5 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
-                PayGate превращает хаос кнопок в боте в понятную рабочую систему для владельца канала: управление чатами, подписками, доступом,
+                Допуск превращает хаос кнопок в боте в понятную рабочую систему для владельца канала: управление чатами, подписками, доступом,
                 логами и поддержкой в mini app.
               </p>
 
@@ -144,7 +144,7 @@ export default function LandingV2Page() {
             <div className={`rounded-3xl p-5 sm:p-6 ${styles.heroPanel}`}>
               <div className={styles.heroPanelHead}>
                 <div>
-                  <div className="text-sm font-semibold text-slate-900">PayGate Control Center</div>
+                  <div className="text-sm font-semibold text-slate-900">Центр управления «Допуск»</div>
                   <div className="text-xs text-slate-500">Realtime Snapshot</div>
                 </div>
                 <div className={`rounded-full bg-slate-900 px-3 py-1 text-[11px] text-white ${styles.mono}`}>LIVE</div>
@@ -207,7 +207,7 @@ export default function LandingV2Page() {
         <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {PRODUCT_BLOCKS.map((item) => (
             <div key={item.title} className={`rounded-2xl p-5 ${styles.bentoCard}`}>
-              <div className="inline-flex rounded-full bg-slate-900 px-2.5 py-1 text-[11px] font-medium text-white">PayGate</div>
+              <div className="inline-flex rounded-full bg-slate-900 px-2.5 py-1 text-[11px] font-medium text-white">Допуск</div>
               <div className="mt-3 text-base font-semibold text-slate-900">{item.title}</div>
               <p className="mt-2 text-sm leading-6 text-slate-600">{item.text}</p>
             </div>
@@ -226,7 +226,7 @@ export default function LandingV2Page() {
           <div className="grid grid-cols-3 border-b border-slate-200 bg-slate-50/80 text-xs font-semibold uppercase tracking-wide text-slate-600">
             <div className="px-4 py-3 sm:px-5">Сценарий</div>
             <div className="px-4 py-3 sm:px-5">Классический SaaS</div>
-            <div className="px-4 py-3 sm:px-5">PayGate</div>
+            <div className="px-4 py-3 sm:px-5">Допуск</div>
           </div>
           {COMPARE_ROWS.map((row, index) => (
             <div
@@ -264,7 +264,7 @@ export default function LandingV2Page() {
                 rel="noreferrer"
                 className="inline-flex min-h-12 items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-brand-700 transition hover:bg-slate-100"
               >
-                Запустить PayGate в Telegram
+                Запустить «Допуск» в Telegram
               </a>
               <Link
                 href="/"

@@ -5,7 +5,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Политика обработки персональных данных",
-  description: "Политика обработки персональных данных PayGate."
+  description: "Политика обработки персональных данных Допуск."
 };
 
 export default function PrivacyPage() {

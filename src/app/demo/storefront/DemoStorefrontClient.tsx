@@ -122,7 +122,7 @@ export function DemoStorefrontClient() {
                 </span>
               </div>
               <p className="mt-3 text-sm leading-6 text-slate-600 sm:text-[15px]">
-                Формат реальной витрины PayGate: описание, тариф, условия и поддержка в одном месте. Показаны данные демо-канала о путешествиях.
+                Формат реальной витрины Допуск: описание, тариф, условия и поддержка в одном месте. Показаны данные демо-канала о путешествиях.
               </p>
             </div>
           </header>
@@ -168,14 +168,14 @@ export function DemoStorefrontClient() {
             <div className="rounded-2xl border border-slate-200 bg-white p-4">
               <div className="text-sm font-medium text-slate-900">Поддержка</div>
               <div className="mt-2 space-y-1 text-sm text-slate-600">
-                <p>Email: demo@paygt.ru</p>
+                <p>Email: demo@mydopusk.ru</p>
                 <p>Telegram: @paygate_demo</p>
               </div>
             </div>
           </div>
 
           <footer className="mt-6 border-t border-slate-200 pt-4 text-xs text-slate-500">
-            Используя эту витрину, вы соглашаетесь с условиями продавца. По сервису PayGate:
+            Используя эту витрину, вы соглашаетесь с условиями продавца. По сервису «Допуск»:
             {" "}
             <Link href="/oferta" className="text-brand-700 hover:text-brand-800">
               оферта

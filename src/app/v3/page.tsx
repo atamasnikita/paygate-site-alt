@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { config } from "@/config";
 import { LandingV3Client } from "./LandingV3Client";
 
-const title = "PayGate v3 — монетизация Telegram, которая выглядит как зрелый SaaS";
+const title = "Допуск v3 — монетизация Telegram, которая выглядит как зрелый SaaS";
 const description =
-  "PayGate автоматизирует платный доступ в Telegram: оплата, выдача доступа, статусы подписок и исключения по правилам. Управление — в удобном мини-приложении.";
+  "Допуск автоматизирует платный доступ в Telegram: оплата, выдача доступа, статусы подписок и исключения по правилам. Управление — в удобном мини-приложении.";
 const pageUrl = `${config.siteUrl}/v3`;
 const ogImage = `${config.siteUrl}/og-v3.png`;
 
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "пейвол для Telegram",
     "бот для платной подписки Telegram",
     "мини-приложение Telegram для владельца канала",
-    "PayGate"
+    "Допуск"
   ],
   robots: { index: false, follow: false },
   openGraph: {
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     title,
     description,
     url: pageUrl,
-    siteName: "PayGate",
-    images: [{ url: ogImage, width: 1200, height: 630, alt: "PayGate v3" }]
+    siteName: "Допуск",
+    images: [{ url: ogImage, width: 1200, height: 630, alt: "Допуск v3" }]
   },
   twitter: {
     card: "summary_large_image",

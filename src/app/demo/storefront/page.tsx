@@ -3,7 +3,7 @@ import { DemoStorefrontClient } from "./DemoStorefrontClient";
 
 export const metadata: Metadata = {
   title: "Пример витрины",
-  description: "Демо-витрина владельца канала в PayGate: без оплаты и без персональных данных.",
+  description: "Демо-витрина владельца канала в Допуск: без оплаты и без персональных данных.",
   robots: { index: false, follow: false }
 };
 

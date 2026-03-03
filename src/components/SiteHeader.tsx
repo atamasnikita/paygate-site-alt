@@ -20,7 +20,7 @@ export function SiteHeader() {
       <div className="mx-auto max-w-6xl px-4 py-3">
         <div className="flex items-center justify-between gap-4">
           <Link href="/" className="font-semibold tracking-tight">
-            PayGate
+            Допуск
           </Link>
 
           {isV3 ? (

@@ -4,7 +4,10 @@ import { config } from "@/config";
 
 export const metadata: Metadata = {
   title: "Контакты",
-  description: "Контакты «Допуска», реквизиты и ссылки на юридические документы."
+  description: "Контакты «Допуска», реквизиты и ссылки на юридические документы.",
+  alternates: {
+    canonical: `${config.siteUrl}/contacts/`
+  }
 };
 
 export default function ContactsPage() {

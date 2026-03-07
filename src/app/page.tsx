@@ -37,6 +37,9 @@ const landingStructuredData = {
 export const metadata: Metadata = {
   title,
   description,
+  alternates: {
+    canonical: pageUrl
+  },
   keywords: [
     "монетизация Telegram канала",
     "платный доступ в Telegram",

@@ -11,12 +11,12 @@ declare global {
 
 const CONSENT_STORAGE_KEY = "dopusk_cookie_consent";
 
-type ConsentState = "accepted" | "rejected" | null;
+type ConsentState = "accepted" | null;
 
 function getStoredConsent(): ConsentState {
   if (typeof window === "undefined") return null;
   const value = window.localStorage.getItem(CONSENT_STORAGE_KEY);
-  return value === "accepted" || value === "rejected" ? value : null;
+  return value === "accepted" ? value : null;
 }
 
 function loadYandexMetrika(counterId: number) {
@@ -82,11 +82,21 @@ export function CookieConsent({ metrikaId }: { metrikaId: number }) {
 
   return (
     <div className="cookie-consent" role="dialog" aria-live="polite" aria-label="Уведомление об аналитических cookie">
+      <div className="cookie-consent__icon" aria-hidden="true">
+        <svg viewBox="0 0 40 40" className="cookie-consent__icon-svg">
+          <circle cx="20" cy="20" r="18" fill="#f4dcc1" />
+          <circle cx="14" cy="14" r="2.3" fill="#8b5e3c" />
+          <circle cx="24.5" cy="12.5" r="2.1" fill="#8b5e3c" />
+          <circle cx="27" cy="21" r="2.5" fill="#8b5e3c" />
+          <circle cx="17" cy="24" r="2.2" fill="#8b5e3c" />
+          <circle cx="12.5" cy="28" r="1.9" fill="#8b5e3c" />
+          <path d="M27 5.5a7 7 0 0 1 7 7 8.5 8.5 0 0 0-8.5 8.5A8.5 8.5 0 0 1 17 29.5 7.5 7.5 0 0 0 9.5 37 18 18 0 1 1 27 5.5Z" fill="#f0cfac" opacity="0.65" />
+        </svg>
+      </div>
       <div className="cookie-consent__copy">
-        <div className="cookie-consent__title">Мы используем cookie для аналитики</div>
+        <div className="cookie-consent__title">Мы используем cookie, чтобы сайт работал корректно</div>
         <p className="cookie-consent__text">
-          На сайте используется Яндекс.Метрика. Она помогает понять, как работает лендинг, и улучшать его. Подробнее
-          — в{" "}
+          Нажимая «Принять», вы соглашаетесь на обработку cookie-файлов. Подробнее — в{" "}
           <a href="/privacy/" className="cookie-consent__link">
             политике конфиденциальности
           </a>
@@ -94,16 +104,6 @@ export function CookieConsent({ metrikaId }: { metrikaId: number }) {
         </p>
       </div>
       <div className="cookie-consent__actions">
-        <button
-          type="button"
-          className="cookie-consent__button cookie-consent__button--ghost"
-          onClick={() => {
-            window.localStorage.setItem(CONSENT_STORAGE_KEY, "rejected");
-            setConsent("rejected");
-          }}
-        >
-          Только необходимые
-        </button>
         <button
           type="button"
           className="cookie-consent__button cookie-consent__button--primary"

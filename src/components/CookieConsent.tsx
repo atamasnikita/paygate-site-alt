@@ -11,12 +11,12 @@ declare global {
 
 const CONSENT_STORAGE_KEY = "dopusk_cookie_consent";
 
-type ConsentState = "accepted" | null;
+type ConsentState = "dismissed" | null;
 
 function getStoredConsent(): ConsentState {
   if (typeof window === "undefined") return null;
   const value = window.localStorage.getItem(CONSENT_STORAGE_KEY);
-  return value === "accepted" ? value : null;
+  return value === "dismissed" ? value : null;
 }
 
 function loadYandexMetrika(counterId: number) {
@@ -67,21 +67,19 @@ export function CookieConsent({ metrikaId }: { metrikaId: number }) {
   const [resolved, setResolved] = useState(false);
 
   useEffect(() => {
+    loadYandexMetrika(metrikaId);
+  }, [metrikaId]);
+
+  useEffect(() => {
     const saved = getStoredConsent();
     setConsent(saved);
     setResolved(true);
   }, []);
 
-  useEffect(() => {
-    if (consent === "accepted") {
-      loadYandexMetrika(metrikaId);
-    }
-  }, [consent, metrikaId]);
-
   if (!resolved || consent) return null;
 
   return (
-    <div className="cookie-consent" role="dialog" aria-live="polite" aria-label="Уведомление об аналитических cookie">
+    <div className="cookie-consent" role="status" aria-live="polite" aria-label="Уведомление об использовании cookie">
       <div className="cookie-consent__icon" aria-hidden="true">
         <svg viewBox="0 0 40 40" className="cookie-consent__icon-svg">
           <circle cx="20" cy="20" r="18" fill="#f4dcc1" />
@@ -96,7 +94,10 @@ export function CookieConsent({ metrikaId }: { metrikaId: number }) {
       <div className="cookie-consent__copy">
         <div className="cookie-consent__title">Мы используем cookie, чтобы сайт работал корректно</div>
         <p className="cookie-consent__text">
-          Нажимая «Принять», вы соглашаетесь на обработку cookie-файлов. Подробнее — в{" "}
+          Продолжая пользоваться сайтом, вы соглашаетесь на обработку cookie-файлов.
+        </p>
+        <p className="cookie-consent__more">
+          Подробнее — в{" "}
           <a href="/privacy/" className="cookie-consent__link">
             политике конфиденциальности
           </a>
@@ -108,8 +109,8 @@ export function CookieConsent({ metrikaId }: { metrikaId: number }) {
           type="button"
           className="cookie-consent__button cookie-consent__button--primary"
           onClick={() => {
-            window.localStorage.setItem(CONSENT_STORAGE_KEY, "accepted");
-            setConsent("accepted");
+            window.localStorage.setItem(CONSENT_STORAGE_KEY, "dismissed");
+            setConsent("dismissed");
           }}
         >
           Принять

@@ -65,6 +65,7 @@ function loadYandexMetrika(counterId: number) {
 export function CookieConsent({ metrikaId }: { metrikaId: number }) {
   const [consent, setConsent] = useState<ConsentState>(null);
   const [resolved, setResolved] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     loadYandexMetrika(metrikaId);
@@ -76,10 +77,21 @@ export function CookieConsent({ metrikaId }: { metrikaId: number }) {
     setResolved(true);
   }, []);
 
+  useEffect(() => {
+    if (!resolved || consent) return;
+    const frame = window.requestAnimationFrame(() => setIsVisible(true));
+    return () => window.cancelAnimationFrame(frame);
+  }, [resolved, consent]);
+
   if (!resolved || consent) return null;
 
   return (
-    <div className="cookie-consent" role="status" aria-live="polite" aria-label="Уведомление об использовании cookie">
+    <div
+      className={`cookie-consent${isVisible ? " cookie-consent--visible" : ""}`}
+      role="status"
+      aria-live="polite"
+      aria-label="Уведомление об использовании cookie"
+    >
       <div className="cookie-consent__icon" aria-hidden="true">
         <svg viewBox="0 0 40 40" className="cookie-consent__icon-svg">
           <circle cx="20" cy="20" r="18" fill="#f4dcc1" />
@@ -92,9 +104,9 @@ export function CookieConsent({ metrikaId }: { metrikaId: number }) {
         </svg>
       </div>
       <div className="cookie-consent__copy">
-        <div className="cookie-consent__title">Мы используем cookie, чтобы сайт работал корректно</div>
         <p className="cookie-consent__text">
-          Продолжая пользоваться сайтом, вы соглашаетесь на обработку cookie-файлов.
+          Мы используем cookie и Яндекс.Метрику. Продолжая пользоваться сайтом, вы соглашаетесь на обработку
+          cookie-файлов.
         </p>
         <p className="cookie-consent__more">
           Подробнее — в{" "}
@@ -109,8 +121,11 @@ export function CookieConsent({ metrikaId }: { metrikaId: number }) {
           type="button"
           className="cookie-consent__button cookie-consent__button--primary"
           onClick={() => {
-            window.localStorage.setItem(CONSENT_STORAGE_KEY, "dismissed");
-            setConsent("dismissed");
+            setIsVisible(false);
+            window.setTimeout(() => {
+              window.localStorage.setItem(CONSENT_STORAGE_KEY, "dismissed");
+              setConsent("dismissed");
+            }, 240);
           }}
         >
           Принять

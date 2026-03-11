@@ -19,17 +19,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 12px;
   border-top: 1px solid rgba(148, 163, 184, 0.24);
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 -18px 40px rgba(15, 23, 42, 0.08);
   backdrop-filter: blur(16px);
-  padding: 10px 22px;
+  padding: 8px 20px;
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(14px);
   transition:
-    opacity 0.24s ease,
-    transform 0.24s ease;
+    opacity 0.32s ease,
+    transform 0.32s ease;
 }
 
 .cookie-consent--visible {
@@ -38,7 +38,7 @@ body {
 }
 
 .cookie-consent__copy {
-  max-width: 760px;
+  max-width: 780px;
   min-width: 0;
   flex: 1;
 }
@@ -48,28 +48,29 @@ body {
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 999px;
   background: rgba(245, 158, 11, 0.08);
 }
 
 .cookie-consent__icon-svg {
-  width: 25px;
-  height: 25px;
+  width: 22px;
+  height: 22px;
 }
 
 .cookie-consent__text {
   margin: 0;
   font-size: 14px;
-  line-height: 1.45;
-  color: #334155;
+  line-height: 1.35;
+  color: #0f172a;
+  font-weight: 600;
 }
 
 .cookie-consent__more {
-  margin: 3px 0 0;
-  font-size: 13px;
-  line-height: 1.45;
+  margin: 1px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
   color: #475569;
 }
 
@@ -86,10 +87,10 @@ body {
 }
 
 .cookie-consent__button {
-  min-height: 44px;
+  min-height: 40px;
   border-radius: 999px;
-  padding: 0 18px;
-  font-size: 14px;
+  padding: 0 16px;
+  font-size: 13px;
   font-weight: 600;
   transition:
     transform 0.2s ease,
@@ -112,10 +113,10 @@ body {
 @media (max-width: 720px) {
   .cookie-consent {
     flex-direction: row;
-    align-items: stretch;
+    align-items: center;
     justify-content: flex-start;
-    gap: 12px;
-    padding: 10px 14px;
+    gap: 10px;
+    padding: 9px 12px;
   }
 
   .cookie-consent__actions {
@@ -123,18 +124,19 @@ body {
   }
 
   .cookie-consent__button {
-    min-width: 148px;
-    padding: 0 24px;
+    min-width: 156px;
+    min-height: 42px;
+    padding: 0 22px;
   }
 
   .cookie-consent__icon {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
   }
 
   .cookie-consent__icon-svg {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
   }
 
   .cookie-consent__text {
@@ -149,7 +151,7 @@ body {
 @media (max-width: 540px) {
   .cookie-consent {
     flex-wrap: wrap;
-    padding-bottom: max(12px, env(safe-area-inset-bottom, 0px));
+    padding-bottom: max(10px, env(safe-area-inset-bottom, 0px));
   }
 
   .cookie-consent__actions {
@@ -158,6 +160,6 @@ body {
   }
 
   .cookie-consent__button {
-    width: min(220px, 100%);
+    width: min(200px, 100%);
   }
 }

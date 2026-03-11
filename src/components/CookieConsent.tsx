@@ -105,11 +105,10 @@ export function CookieConsent({ metrikaId }: { metrikaId: number }) {
       </div>
       <div className="cookie-consent__copy">
         <p className="cookie-consent__text">
-          Мы используем cookie и Яндекс.Метрику. Продолжая пользоваться сайтом, вы соглашаетесь на обработку
-          cookie-файлов.
+          Мы используем cookie и Яндекс.Метрику.
         </p>
         <p className="cookie-consent__more">
-          Подробнее — в{" "}
+          Продолжая пользоваться сайтом, вы соглашаетесь на обработку cookie-файлов. Подробнее — в{" "}
           <a href="/privacy/" className="cookie-consent__link">
             политике конфиденциальности
           </a>

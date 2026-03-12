@@ -6,7 +6,7 @@ const title = "Допуск v3 — монетизация Telegram, котора
 const description =
   "Допуск автоматизирует платный доступ в Telegram: оплата, выдача доступа, статусы подписок и исключения по правилам. Управление — в удобном мини-приложении.";
 const pageUrl = `${config.siteUrl}/v3`;
-const ogImage = `${config.siteUrl}/og-v3.png`;
+const ogImage = `${config.siteUrl}/og-v4.png`;
 
 export const metadata: Metadata = {
   title,

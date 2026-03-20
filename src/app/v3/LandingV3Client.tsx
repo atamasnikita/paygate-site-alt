@@ -59,7 +59,7 @@ const DEMO_TABS: Array<{ id: DemoTab; label: string; subtitle: string }> = [
   { id: "status", label: "Сводка", subtitle: "Оборот и статусы" },
   { id: "chats", label: "Ресурсы", subtitle: "Подписчики и тарифы" },
   { id: "storefront", label: "Витрина", subtitle: "Публикация и тариф" },
-  { id: "provider", label: "Провайдер", subtitle: "Robokassa / YooKassa" },
+  { id: "provider", label: "Провайдер", subtitle: "Robokassa / ЮKassa" },
   { id: "logs", label: "Журнал", subtitle: "События и действия" }
 ] as const;
 
@@ -195,11 +195,11 @@ const FAQ = [
   },
   {
     q: "Кто может подключить платежный провайдер?",
-    a: "Для подключения YooKassa или Robokassa нужен оформленный статус самозанятого, ИП или ООО. Если статуса еще нет, сначала оформите его, затем вернитесь к настройке провайдера."
+    a: "Для подключения ЮKassa или Robokassa нужен оформленный статус самозанятого, ИП или ООО. Если статуса еще нет, сначала оформите его, затем вернитесь к настройке провайдера."
   },
   {
     q: "Куда идут деньги подписчиков?",
-    a: "Деньги идут напрямую в подключенный платежный провайдер владельца канала (Robokassa или YooKassa). Допуск не принимает платежи на свою сторону."
+    a: "Деньги идут напрямую в подключенный платежный провайдер владельца канала (Robokassa или ЮKassa). Допуск не принимает платежи на свою сторону."
   },
   {
     q: "Что если оплатили, но доступ не выдан?",
@@ -223,7 +223,7 @@ const JOURNEY_NODES = [
   { id: "channel", title: "Создай закрытый канал или группу", subtitle: "Закрытый канал или группа", actionLabel: "Создаем" },
   { id: "telegram", title: "Добавь бота админом", subtitle: "Telegram: права администратора", actionLabel: "Добавляем" },
   { id: "storefront", title: "При необходимости включи витрину", subtitle: "Допуск: mini app (опционально)", actionLabel: "Настраиваем" },
-  { id: "provider", title: "Подключи платежный провайдер", subtitle: "Robokassa или YooKassa", actionLabel: "Подключаем" },
+  { id: "provider", title: "Подключи платежный провайдер", subtitle: "Robokassa или ЮKassa", actionLabel: "Подключаем" },
   { id: "link", title: "Опубликуй ссылку на оплату", subtitle: "Публичная ссылка на оплату", actionLabel: "Публикуем" },
   { id: "result", title: "Первая оплата и доступ", subtitle: "Оплата -> доступ выдан", actionLabel: "Получаем" }
 ] as const;
@@ -554,7 +554,7 @@ export function LandingV3Client() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4">
-        <div className={styles.trustLine}>Robokassa / YooKassa • Встроено в Telegram • Без данных карт</div>
+        <div className={styles.trustLine}>Robokassa / ЮKassa • Встроено в Telegram • Без данных карт</div>
       </section>
 
       <section id="how-it-works" ref={journeyRef} className="mx-auto max-w-6xl px-4 py-14 sm:py-16">
@@ -872,7 +872,7 @@ export function LandingV3Client() {
         <SectionHead
           eyebrow="Вопросы"
           title="Закрываем ключевые вопросы перед запуском"
-          text="Платежный провайдер — это сервис приема оплаты (например, Robokassa или YooKassa), который зачисляет деньги напрямую владельцу канала."
+          text="Платежный провайдер — это сервис приема оплаты (например, Robokassa или ЮKassa), который зачисляет деньги напрямую владельцу канала."
         />
         <div className="mt-8">
           <FaqAccordion
@@ -1347,7 +1347,7 @@ function DemoProviderTab() {
         <div className={styles.demoCardLike}>
           <div className={styles.demoPanelHeadRow}>
             <div>
-              <div className={styles.demoPanelTitle}>Платежный провайдер (Robokassa / YooKassa)</div>
+              <div className={styles.demoPanelTitle}>Платежный провайдер (Robokassa / ЮKassa)</div>
               <div className={styles.demoMuted}>{DEMO_DATA.provider.summary}</div>
             </div>
             <span className={`${styles.demoStatus} ${styles.demoStatusOk}`}>{DEMO_DATA.provider.status}</span>
